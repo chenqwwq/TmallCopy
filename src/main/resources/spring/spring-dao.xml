@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--<context:component-scan base-package=""/>-->
+
+    <context:property-placeholder location="classpath:database.properties"/>
+
+    <bean id="databaseSourceByC3P0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass}"/>
+        <property name="jdbcUrl" value="${url}"/>
+        <property name="user" value="${username}"/>
+        <property name="password" value="${password}"/>
+
+        <property name="initialPoolSize" value="${initialPoolSize}"/>
+        <property name="maxPoolSize" value="${maxPoolSize}"/>
+        <property name="minPoolSize" value="${minPoolSize}"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" name="sqlSessionFactory" id="sqlSessionFactory">
+        <property name="dataSource" ref="databaseSourceByC3P0"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- 实体类的包所在,取用别名 -->
+        <property name="typeAliasesPackage" value=""/>
+        <!-- 映射map的地址 -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="failFast" value="true"/>
+    </bean>
+
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        <!-- dao层接口 -->
+        <property name="basePackage" value=""/>
+    </bean>
+
+</beans>

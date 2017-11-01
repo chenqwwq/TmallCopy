@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="tmallCopy:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="tmallCopy.war">
+      <element id="artifact" artifact-name="tmallCopy:war exploded" />
+    </root>
+  </artifact>
+</component>
