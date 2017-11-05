@@ -19,11 +19,18 @@
 
         <!-- 将积极加载改为按需加载 -->
         <setting name="aggressiveLazyLoading" value="true"/>
+
+
     </settings>
     <!-- 实体类别名 -->
     <typeAliases>
         <package name="edu.chen.entity"/>
     </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+
+        </plugin>
+    </plugins>
     <!--
         实体类配置文件映射
         在spring-dao.xml中直接配置全部.xml文件
