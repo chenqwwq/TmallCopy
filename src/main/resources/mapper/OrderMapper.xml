@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chen.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="chen.entity.Order">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="orderCode" jdbcType="VARCHAR" property="orderCode" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="userMessage" jdbcType="VARCHAR" property="userMessage" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="payDate" jdbcType="TIMESTAMP" property="payDate" />
+    <result column="deliveryDate" jdbcType="TIMESTAMP" property="deliveryDate" />
+    <result column="confirmDate" jdbcType="TIMESTAMP" property="confirmDate" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="chen.entity.Order" useGeneratedKeys="true">
+    insert into order_ (uid, orderCode, address, 
+      post, receiver, mobile, 
+      userMessage, createDate, payDate, 
+      deliveryDate, confirmDate, status
+      )
+    values (#{uid,jdbcType=INTEGER}, #{orderCode,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{post,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{userMessage,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{payDate,jdbcType=TIMESTAMP}, 
+      #{deliveryDate,jdbcType=TIMESTAMP}, #{confirmDate,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="chen.entity.Order">
+    update order_
+    set uid = #{uid,jdbcType=INTEGER},
+      orderCode = #{orderCode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      userMessage = #{userMessage,jdbcType=VARCHAR},
+      createDate = #{createDate,jdbcType=TIMESTAMP},
+      payDate = #{payDate,jdbcType=TIMESTAMP},
+      deliveryDate = #{deliveryDate,jdbcType=TIMESTAMP},
+      confirmDate = #{confirmDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, uid, orderCode, address, post, receiver, mobile, userMessage, createDate, 
+    payDate, deliveryDate, confirmDate, status
+    from order_
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, uid, orderCode, address, post, receiver, mobile, userMessage, createDate, 
+    payDate, deliveryDate, confirmDate, status
+    from order_
+  </select>
+</mapper>
