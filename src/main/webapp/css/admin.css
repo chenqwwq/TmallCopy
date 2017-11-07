@@ -18,7 +18,27 @@ div.listDataTableDiv{
 div.pageDiv{
     text-align:center;
 }
-div.addDiv{
-    width:400px;
-    margin:0px auto;
+div.modal-content{
+    width: 500px;
+}
+div.modal-footer-div{
+    text-align: center;
+}
+div.modal-body-input-div{
+    text-align: left;
+    margin: 0 auto;
+    width: 60%;
+}
+div.modal-body-input-div-input{
+    margin: 0 auto;
+}
+button.modal-footer-btn{
+    margin-left: 200px;
+}
+div.operation-btn-div{
+    text-align: right;
+    padding-right: 200px;
+}
+div.modal-header{
+    text-align: left;
 }

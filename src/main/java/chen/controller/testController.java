@@ -2,6 +2,7 @@ package chen.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * tmallCopy
@@ -9,8 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class testController {
-    @RequestMapping("test")
+    @RequestMapping("/test")
     private String hello(){
-        return "public/adminNavigator";
+        return "admin/Test";
+    }
+
+    @RequestMapping(value = "/putTest",method = RequestMethod.PUT)
+    private String test(int id){
+        System.out.println("进入test犯法");
+        System.out.println(id);
+        return "redirect:/test";
     }
 }

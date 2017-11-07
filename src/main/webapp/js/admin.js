@@ -13,3 +13,8 @@ function DeleteResultHandler(result) {
     else
         alert("删除失败"+result.inf);
 }
+
+
+function getForm() {
+    
+}

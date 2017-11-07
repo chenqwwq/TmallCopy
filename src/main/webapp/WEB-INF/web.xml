@@ -62,16 +62,21 @@
     </servlet-mapping>
 
     <!--
-        不知道何种原理,但能使用put和delete请求
+        不知道何种原理,但能使用ajax的put和delete请求
     -->
-    <filter>
-        <filter-name>HttpMethodFilter</filter-name>
-        <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>HttpMethodFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    <!--<filter>-->
+        <!--<filter-name>MultipartFilter</filter-name>-->
+        <!--<filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>MultipartFilter</filter-name>-->
+        <!--<servlet-name>dispatcher</servlet-name>-->
+    <!--</filter-mapping>-->
+    <!--
+        MultipartFilter是以put形式的请求上传文件的filter
+        !!!必须在HiddenHttpMethodFilter
+    -->
+
     <filter>
         <filter-name>HiddenHttpMethodFilter</filter-name>
         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>

@@ -16,4 +16,9 @@ public class UploadedImageFile {
     public void setImage(MultipartFile image) {
         this.image = image;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
