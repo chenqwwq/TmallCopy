@@ -89,16 +89,6 @@
             <button id="add-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#addCategoryModal">
                 新增分类
             </button>
-            <!--
-                模态框,因为只有一点点地方不一样 所以使用for循环
-                不知道好坏
-            -->
-            <%--<%--%>
-                <%--String[] s = new String[]{"add","update"};--%>
-                <%--String[] q = new String[]{"新增分类","编辑分类"};--%>
-                <%--String[] u = new String[]{"POST","PUT"};--%>
-                <%--for (int i = 0;i < s.length;i++) {--%>
-            <%--%>--%>
             <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -108,7 +98,7 @@
                                 <h4 class="modal-title" id="ModalLabel">新增分类</h4>
                             </div>
                             <!-- 因为最后需要页面刷新 所以用不用ajax没有区别 此处直接使用form提交  -->
-                            <form id="addModalForm" action="/admin/category" method="post" enctype="multipart/form-data">
+                            <form id="addModalForm" action="" method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
                                     <div class="modal-body-input-div">
                                         <div class="input-group modal-body-input-div-input">
@@ -133,7 +123,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="modal fade" id="updateCategoryModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

@@ -62,14 +62,9 @@ public class CategoryController {
 
 
     @PostMapping(URL)
-    private String add(@RequestParam(value = "name",required = false) String name, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
+    private String add(/* 此处为了直接能把name放置到category中 不声明为RequestParam */Category category, HttpSession session,
+                       UploadedImageFile uploadedImageFile) throws IOException {
         System.out.println("<-----进入add方法----->");
-        System.out.println(name);
-        /**
-         * 因为此时的category除了name没有别的信息,
-         *    所以需要新对象 用来接收插入操作之后的获得的id */
-        Category category = new Category();
-        category.setName(name);     //创建新的Category对象
         categoryService.add(category);          //增加操作的核心步骤
 //        System.out.println("接收到的文件信息"+uploadedImageFile.getImage().getOriginalFilename());          //测试操作
         File file = new File(new File(session.getServletContext().getRealPath("img/category")),
@@ -86,7 +81,7 @@ public class CategoryController {
 
     @PutMapping(URL)
     @ResponseBody
-    private Result update(@RequestParam Category category,HttpSession session, UploadedImageFile uploadedImageFile) {
+    private Result update(Category category,HttpSession session, UploadedImageFile uploadedImageFile) {
         System.out.println("<-----进入update方法----->");
         System.out.println(category);
         MultipartFile image = uploadedImageFile.getImage();
