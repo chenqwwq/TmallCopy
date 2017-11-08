@@ -5,7 +5,6 @@ import chen.entity.Category;
 import chen.service.CategoryService;
 import chen.util.ImageUtil;
 import chen.util.Page;
-import chen.util.UploadedImageFile;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,12 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
+    /**
+     * 查询全部的分类信息
+     * @param model
+     * @param page
+     * @return
+     */
     @GetMapping(URL)
     private String category(Model model,Page page){
         PageHelper.offsetPage(page.getStart(),page.getCount());
@@ -47,6 +52,12 @@ public class CategoryController {
         return "admin/listCategory";
     }
 
+    /**
+     *  删除分类信息
+     * @param id
+     * @param session
+     * @return
+     */
     @DeleteMapping(URL)
     @ResponseBody
     private Result delete(@RequestParam int id,HttpSession session){
@@ -60,31 +71,42 @@ public class CategoryController {
         return file.exists()?(file.delete()?new Result():new Result("文件删除错误")):new Result();
     }
 
-
+    /**
+     * 增加分类信息
+     * @param category
+     * @param session
+     * @param image
+     * @return
+     * @throws IOException
+     */
     @PostMapping(URL)
     private String add(/* 此处为了直接能把name放置到category中 不声明为RequestParam */Category category, HttpSession session,
-                       UploadedImageFile uploadedImageFile) throws IOException {
-        System.out.println("<-----进入add方法----->");
+                       MultipartFile image) throws IOException {
         categoryService.add(category);          //增加操作的核心步骤
 //        System.out.println("接收到的文件信息"+uploadedImageFile.getImage().getOriginalFilename());          //测试操作
         File file = new File(new File(session.getServletContext().getRealPath("img/category")),
                 category.getId()+".jpg");    //获取存储照片的真实文件位置
         if(!file.getParentFile().exists())
             file.getParentFile().mkdirs();
-        uploadedImageFile.getImage().transferTo(file);
+        image.transferTo(file);
         BufferedImage img = ImageUtil.change2jpg(file);
         ImageIO.write(img, "jpg", file);
-        System.out.println("完成添加操作");
         return "redirect:/admin"+URL;
     }
 
 
+    /**
+     * 更新分类信息
+     * @param category
+     * @param session
+     * @param image
+     * @return
+     */
     @PutMapping(URL)
     @ResponseBody
-    private Result update(Category category,HttpSession session, UploadedImageFile uploadedImageFile) {
-        System.out.println("<-----进入update方法----->");
-        System.out.println(category);
-        MultipartFile image = uploadedImageFile.getImage();
+    private Result update(Category category,HttpSession session, MultipartFile image ) {
+//        System.out.println("<-----进入update方法----->");
+        categoryService.update(category);
         if(null!=image &&!image.isEmpty()){
             File  imageFolder= new File(session.getServletContext().getRealPath("img/category"));
             File file = new File(imageFolder,category.getId()+".jpg");

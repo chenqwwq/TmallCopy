@@ -43,15 +43,15 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${categories}" var="c">
-                    <tr>
-                        <td>${c.id}</td>
+                    <tr class="data">
+                        <td id="cid">${c.id}</td>
                         <td><img height="40px" src="/img/category/${c.id}.jpg"></td>
-                        <td>${c.name}</td>
+                        <td id="cname">${c.name}</td>
                         <td><a href="property/${c.id}"><span class="glyphicon glyphicon-th-list"></span></a></td>
                         <td><a href="admin_product_list?cid=${c.id}"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
                         <!-- 此处直接把模态框需要的属性声明为标签的属性 也可以利用节点之间的关系找到相应节点并提取val( -->
-                        <td><a id="edit_category" data-toggle="modal" data-target="#updateCategoryModal" data="${c.name}" data1="${c.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                        <td><a id="delete_category" data=${c.id}><span class="glyphicon glyphicon-trash"></span></a></td>
+                        <td><a id="edit_category" data-toggle="modal" data-target="#updateCategoryModal"><span class="glyphicon glyphicon-edit"></span></a></td>
+                        <td><a id="delete_category"><span class="glyphicon glyphicon-trash"></span></a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -102,13 +102,13 @@
                                 <div class="modal-body">
                                     <div class="modal-body-input-div">
                                         <div class="input-group modal-body-input-div-input">
-                                            <label for="CategoryName1">分类名称</label>
-                                            <input id="CategoryName1" class="form-control" name="name" placeholder="分类名称">
+                                            <label for="addCategoryName">分类名称</label>
+                                            <input id="addCategoryName" class="form-control" name="name" placeholder="分类名称">
                                         </div>
                                         <br/>
                                         <div class="input-group modal-body-input-div-input">
-                                            <label for="CategoryPic1">分类图片</label>
-                                            <input id="CategoryPic1" accept="image/*" type="file" name="image" />
+                                            <label for="addCategoryPic">分类图片</label>
+                                            <input id="addCategoryPic" accept="image/*" type="file" name="image" />
                                         </div>
                                     </div>
                                 </div>
@@ -130,12 +130,15 @@
                             <div class="modal-header">
                                 <h4 class="modal-title" id="ModalLabel2">修改分类</h4>
                             </div>
-                            <form id="updateModalForm" action="/admin/category" method="post" enctype="multipart/form-data">
+                            <form id="updateModalForm" method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
                                     <div class="modal-body-input-div">
                                         <div class="input-group modal-body-input-div-input">
+                                            <input type="hidden" id="updateCategoryId" class="form-control" name="id">
+                                        </div>
+                                        <div class="input-group modal-body-input-div-input">
                                             <label for="updateCategoryName">分类名称</label>
-                                            <input id="updateCategoryName" class="form-control" name="name" placeholder="分类名称">
+                                            <input id="updateCategoryName" class="form-control" name="name">
                                         </div>
                                         <br/>
                                         <div class="input-group modal-body-input-div-input">
@@ -159,19 +162,16 @@
     </div>
 </body>
 <script type="text/javascript">
-
     $("button#update-category-btn").click(function () {
-
         var form = new FormData(document.getElementById("updateModalForm"));
-        form.append('_method','put');
-        alert(JSON.stringify(form));
+        form.append("_method", 'put');
         $.ajax({
             type:"post",
             data:form,
             processData: false,
             contentType: false,
-            success:function () {
-                alert("上传成功");
+            success:function (result) {
+                ResultHandler(result);
             },
             error:function () {
                 alert("系统错误")
@@ -179,7 +179,6 @@
         });
         get();
     });
-
     /*
      *   此处不知道是什么bug,后台的DeleteMapper完全接收不到ajax的参数
      *   使用网上的方法后成功,在web.xml中添加两个filter,在使用POST请求承载_method参数
@@ -190,11 +189,11 @@
             //因为使用操作符表示 所以使用统一的url
             type:"POST",
             data: {
-                id:$(this).attr('data'),
+                id:getIdForUD($(this)),
                 _method:'DELETE'
             },
             success:function (result) {
-                DeleteResultHandler(result);
+                ResultHandler(result);
             },
             error:function () {
                 alert("系统错误")
@@ -202,12 +201,20 @@
         });
     });
 
+    /**
+     * 获取更新或者删除所需要的分类Id
+     * @param element
+     */
+    function getIdForUD(element) {
+        return element.parents().siblings("#cid").text();
+    }
+
 
     //在点击属性编辑按钮之后,将原本的分类名称显示在弹出框的名称输入框
     //同时传递分类id
     $("a#edit_category").click(function () {
-        $("div#updateCategoryModal").find("input#updateCategoryName").val($(this).attr('data'));
-        $("button#update-category-btn").attr("data",$(this).attr("data1"));
+        $("input#updateCategoryId").val(getIdForUD($(this)));
+        $("input#updateCategoryName").val($(this).parents().siblings("#cname").text());
     });
 </script>
 </html>

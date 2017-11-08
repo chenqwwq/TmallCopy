@@ -1,7 +1,6 @@
 //处理从后端返回的Result Json对象
-function DeleteResultHandler(result) {
+function ResultHandler(result) {
     if(result.success) {
-        alert("删除成功");
         window.location.reload();       //页面刷新代码
         /**
          *  !!!!因为在判断属性期间不能放参数 所以中间用"+"隔开
@@ -11,10 +10,5 @@ function DeleteResultHandler(result) {
          */
     }
     else
-        alert("删除失败"+result.inf);
-}
-
-
-function getForm() {
-    
+        alert("操作失败"+result.inf);
 }

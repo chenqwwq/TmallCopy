@@ -1,7 +1,7 @@
 package chen.entity;
 
 public class Category {
-    private Integer id;
+    private int id;
 
     private String name;
 
@@ -19,5 +19,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

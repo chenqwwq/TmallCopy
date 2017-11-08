@@ -1,8 +1,11 @@
 package chen.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * tmallCopy
@@ -15,10 +18,17 @@ public class testController {
         return "admin/Test";
     }
 
-    @RequestMapping(value = "/putTest",method = RequestMethod.PUT)
-    private String test(int id){
-        System.out.println("进入test犯法");
+
+    @PutMapping(value = "/puTest")
+    private String test1(@RequestParam("id") int id){
         System.out.println(id);
+        return "redirect:/test";
+    }
+
+    @PutMapping(value = "/upload")
+    private String test(MultipartFile file){
+        System.out.println("进入test方法");
+        System.out.println(file.getOriginalFilename());
         return "redirect:/test";
     }
 }
