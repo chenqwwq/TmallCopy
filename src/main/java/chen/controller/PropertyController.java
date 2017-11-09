@@ -2,6 +2,7 @@ package chen.controller;
 
 import chen.dto.Result;
 import chen.entity.Category;
+import chen.entity.Property;
 import chen.service.CategoryService;
 import chen.service.PropertyService;
 import chen.util.Page;
@@ -20,6 +21,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 public class PropertyController {
+    private static final String URL = "/property";
     private final CategoryService categoryService;
     private final PropertyService propertyService;
 
@@ -29,8 +31,8 @@ public class PropertyController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping(value = "/property/{cid}")
-    private String property(@PathVariable("cid") int cid, Model model,Page page){
+    @GetMapping(URL)
+    private String get(@RequestParam("cid") int cid, Model model,Page page){
         //获取相应类型信息
         Category category = categoryService.get(cid);
         //分页机制
@@ -43,13 +45,28 @@ public class PropertyController {
         model.addAttribute("properties",properties);
         model.addAttribute("page",page);
         model.addAttribute("category",category);
-        return "/admin/editProperty";
+        return "/admin/Property";
     }
 
-    @DeleteMapping(value = "/property/{cid}")
+    @DeleteMapping(URL)
     @ResponseBody
-    private Result delete(@PathVariable("cid") int cid,@RequestParam int pid){
+    private Result delete( int cid,@RequestParam int pid){
         propertyService.delete(pid);        //删除的核心操作
+        return new Result();
+    }
+
+    @PostMapping(URL)
+    @ResponseBody
+    private Result add(Property property){
+        propertyService.add(property);
+        return new Result();
+    }
+
+
+    @PutMapping("/property")
+    @ResponseBody
+    private Result update(Property property){
+        propertyService.update(property);
         return new Result();
     }
 }

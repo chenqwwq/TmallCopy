@@ -27,7 +27,6 @@ import java.util.List;
 @RequestMapping("/admin")
 public class CategoryController {
     private static final String URL = "/category";
-
     private final CategoryService categoryService;
 
     @Autowired
@@ -42,15 +41,16 @@ public class CategoryController {
      * @return
      */
     @GetMapping(URL)
-    private String category(Model model,Page page){
+    private String get(Model model,Page page){
         PageHelper.offsetPage(page.getStart(),page.getCount());
         List<Category> list = categoryService.list();       //得到相应数据
         page.setTotal((int)new PageInfo<>(list).getTotal());
         if(list.size() > 0)
             model.addAttribute("categories",list);
         model.addAttribute("page",page);
-        return "admin/listCategory";
+        return "admin/Category";
     }
+
 
     /**
      *  删除分类信息
@@ -70,6 +70,7 @@ public class CategoryController {
         File file = new File(new File(session.getServletContext().getRealPath("img/category")),id+".jpg");
         return file.exists()?(file.delete()?new Result():new Result("文件删除错误")):new Result();
     }
+
 
     /**
      * 增加分类信息
@@ -121,6 +122,7 @@ public class CategoryController {
         }
         return new Result();
     }
+
 
     private void show(List list){
         for(Object object : list){

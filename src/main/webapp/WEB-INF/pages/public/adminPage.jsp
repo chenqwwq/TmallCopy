@@ -12,6 +12,25 @@
             return false;
         });
     });
+   <%
+        /**
+        *   重构request的param序列 直接?start的方式会丢失原参数
+        */
+        StringBuilder append = new StringBuilder("?");
+        if(request.getQueryString() != null){
+            String[] s = request.getQueryString().split("&");
+            for (int i = 0;i < s.length;i++){
+                if(s[i].startsWith("start")){
+                    s[i] = "";       //将start参数重置
+                }
+            }
+            for (String t : s){
+                if(!t.equals(""))
+                    append.append(t).append("&");       //重构基础参数
+            }
+        }
+   %>
+
 
 </script>
 
@@ -19,13 +38,13 @@
     <ul class="pagination">
         <!-- if判断该页面是否有上一页,如果没有则增加属性disable -->
         <li <c:if test="${!page.hasPreviouse()}">class="disabled"</c:if>>
-            <a  href="?start=0" aria-label="Previous" >
+            <a href="<%=append.toString()%>start=0" aria-label="Previous" >
                 <span>«</span>
             </a>
         </li>
 
         <li <c:if test="${!page.hasPreviouse()}">class="disabled"</c:if>>
-            <a  href="?start=${page.start-page.count}" aria-label="Previous" >
+            <a href="<%=append.toString()%>start=${page.start-page.count}" aria-label="Previous" >
                 <span>‹</span>
             </a>
         </li>
@@ -35,7 +54,7 @@
             <c:if test="${status.count*page.count-page.start<=20 && status.count*page.count-page.start>=-10}">
                 <li <c:if test="${status.index*page.count==page.start}">class="disabled"</c:if>>
                     <a
-                            href="?start=${status.index*page.count}"
+                            href="<%=append.toString()%>start=${status.index*page.count}"
                             <c:if test="${status.index*page.count==page.start}">class="current"</c:if>
                     >${status.count}</a>
                 </li>
@@ -43,12 +62,12 @@
         </c:forEach>
 
         <li <c:if test="${!page.hasNext()}">class="disabled"</c:if>>
-            <a href="?start=${page.start+page.count}" aria-label="Next">
+            <a href="<%=append.toString()%>start=${page.start+page.count}" aria-label="Next">
                 <span>›</span>
             </a>
         </li>
         <li <c:if test="${!page.hasNext()}">class="disabled"</c:if>>
-            <a href="?start=${page.getLast()}" aria-label="Next">
+            <a href="<%=append.toString()%>start=${page.getLast()}" aria-label="Next">
                 <span>»</span>
             </a>
         </li>

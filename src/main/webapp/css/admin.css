@@ -24,12 +24,12 @@ div.modal-content{
 div.modal-footer-div{
     text-align: center;
 }
-div.modal-body-input-div{
+div.modal-body-div{
     text-align: left;
     margin: 0 auto;
     width: 60%;
 }
-div.modal-body-input-div-input{
+div.modal-body-input-div{
     margin: 0 auto;
 }
 button.modal-footer-btn{

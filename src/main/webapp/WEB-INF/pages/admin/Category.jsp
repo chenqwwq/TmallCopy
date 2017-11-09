@@ -47,7 +47,7 @@
                         <td id="cid">${c.id}</td>
                         <td><img height="40px" src="/img/category/${c.id}.jpg"></td>
                         <td id="cname">${c.name}</td>
-                        <td><a href="property/${c.id}"><span class="glyphicon glyphicon-th-list"></span></a></td>
+                        <td><a href="property?cid=${c.id}"><span class="glyphicon glyphicon-th-list"></span></a></td>
                         <td><a href="admin_product_list?cid=${c.id}"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
                         <!-- 此处直接把模态框需要的属性声明为标签的属性 也可以利用节点之间的关系找到相应节点并提取val( -->
                         <td><a id="edit_category" data-toggle="modal" data-target="#updateCategoryModal"><span class="glyphicon glyphicon-edit"></span></a></td>
@@ -86,40 +86,50 @@
         <%--</div>--%>
         </div>
         <div class="operation-btn-div">
+            <!--
+                data-toggle 该属性指定触发事件
+                data-target 该属性指定触发元素对象
+            -->
             <button id="add-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#addCategoryModal">
                 新增分类
             </button>
-            <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+            <!--
+                新增分类的BootStrap模态框
+                modal  模态框的主体属性
+                fade   切换方式(淡入淡出)
+                aria-hidden 保持模态框不可见
+            -->
+            <div class="modal fade" id="addCategoryModal" tabindex="-1"
+                 role="dialog" aria-labelledby="ModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-content-div">
-                            <div class="modal-header">
-                                <%--<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>--%>
-                                <h4 class="modal-title" id="ModalLabel">新增分类</h4>
-                            </div>
-                            <!-- 因为最后需要页面刷新 所以用不用ajax没有区别 此处直接使用form提交  -->
-                            <form id="addModalForm" action="" method="post" enctype="multipart/form-data">
-                                <div class="modal-body">
-                                    <div class="modal-body-input-div">
-                                        <div class="input-group modal-body-input-div-input">
-                                            <label for="addCategoryName">分类名称</label>
-                                            <input id="addCategoryName" class="form-control" name="name" placeholder="分类名称">
-                                        </div>
-                                        <br/>
-                                        <div class="input-group modal-body-input-div-input">
-                                            <label for="addCategoryPic">分类图片</label>
-                                            <input id="addCategoryPic" accept="image/*" type="file" name="image" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="modal-footer-div">
-                                        <button type="button" class="btn btn-default modal-footer-btn" data-dismiss="modal">关闭</button>
-                                        <button class="btn btn-primary modal-footer-btn">提交</button>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="modal-header">
+                            <%--<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>--%>
+                            <h4 class="modal-title" id="ModalLabel">新增分类</h4>
                         </div>
+                        <!-- 因为最后需要页面刷新 所以用不用ajax没有区别 此处直接使用form提交  -->
+                        <form id="addModalForm" action="" method="post" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="modal-body-div">
+                                    <div class="input-group modal-body-input-div">
+                                        <label for="addCategoryName">分类名称</label>
+                                        <input id="addCategoryName" class="form-control" name="name" placeholder="分类名称">
+                                    </div>
+                                    <br/>
+                                    <div class="input-group modal-body-input-div">
+                                        <label for="addCategoryPic">分类图片</label>
+                                        <input id="addCategoryPic" accept="image/*" type="file" name="image" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="modal-footer-div">
+                                    <!-- data-dismiss给按钮增加一个关系弹窗的功能 -->
+                                    <button type="button" class="btn btn-default modal-footer-btn" data-dismiss="modal">关闭</button>
+                                    <button class="btn btn-primary modal-footer-btn">提交</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -132,16 +142,16 @@
                             </div>
                             <form id="updateModalForm" method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
-                                    <div class="modal-body-input-div">
-                                        <div class="input-group modal-body-input-div-input">
+                                    <div class="modal-body-div">
+                                        <div class="input-group modal-body-input-div">
                                             <input type="hidden" id="updateCategoryId" class="form-control" name="id">
                                         </div>
-                                        <div class="input-group modal-body-input-div-input">
+                                        <div class="input-group modal-body-input-div">
                                             <label for="updateCategoryName">分类名称</label>
                                             <input id="updateCategoryName" class="form-control" name="name">
                                         </div>
                                         <br/>
-                                        <div class="input-group modal-body-input-div-input">
+                                        <div class="input-group modal-body-input-div">
                                             <label for="updateCategoryPic">分类图片</label>
                                             <input id="updateCategoryPic" accept="image/*" type="file" name="image" />
                                         </div>
