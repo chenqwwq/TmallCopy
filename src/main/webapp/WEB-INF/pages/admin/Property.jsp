@@ -61,7 +61,7 @@
             <div class="modal fade" id="addPropertyModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="bg-primary modal-header">
                             <h4 class="modal-title" id="ModalLabel">新增属性</h4>
                         </div>
                         <div class="modal-body">
@@ -84,7 +84,7 @@
             <div class="modal fade" id="editPropertyModal" tabindex="-1" role="dialog" aria-labelledby="editPropertyModal-title">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="bg-primary modal-header">
                             <h4 class="modal-title" id="editPropertyModal-title">修改属性</h4>
                         </div>
                         <div class="modal-body">

@@ -103,7 +103,7 @@
                  role="dialog" aria-labelledby="ModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="bg-primary modal-header">
                             <%--<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>--%>
                             <h4 class="modal-title" id="ModalLabel">新增分类</h4>
                         </div>
@@ -137,7 +137,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-content-div">
-                            <div class="modal-header">
+                            <div class="bg-primary modal-header">
                                 <h4 class="modal-title" id="ModalLabel2">修改分类</h4>
                             </div>
                             <form id="updateModalForm" method="post" enctype="multipart/form-data">
@@ -171,7 +171,28 @@
         </div>
     </div>
 </body>
+
 <script type="text/javascript">
+//    $(function () {
+//        $(window).on('resize', centerModals("updateCategoryModal"));
+//        $(window).on('resize', centerModals("addCategoryModal"));
+//    });
+
+
+    /**
+     *  Modal水品且垂直居中
+     */
+    function centerModals(elementId) {
+        $('#'+elementId).each(function() {
+            var $clone = $(this).clone().css('display','block').appendTo('body');
+            var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+            top = top > 0 ? top : 0;
+            $clone.remove();
+            $(this).find('.modal-content').css("margin-top", top-10);
+        });
+    }
+
+
     $("button#update-category-btn").click(function () {
         var form = new FormData(document.getElementById("updateModalForm"));
         form.append("_method", 'put');
@@ -189,6 +210,8 @@
         });
         get();
     });
+
+
     /*
      *   此处不知道是什么bug,后台的DeleteMapper完全接收不到ajax的参数
      *   使用网上的方法后成功,在web.xml中添加两个filter,在使用POST请求承载_method参数

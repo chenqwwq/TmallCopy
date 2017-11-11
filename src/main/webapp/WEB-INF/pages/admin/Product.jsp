@@ -76,7 +76,7 @@
         <div class="modal fade" id="add-product-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="bg-primary modal-header">
                         <h4 class="modal-title" id="modalLabel">新增产品</h4>
                     </div>
                     <div class="modal-body">
@@ -119,7 +119,7 @@
         <div class="modal fade" id="edit-product-modal" tabindex="-1" role="dialog" aria-labelledby="edit-product-modal-label">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="bg-primary modal-header">
                         <h4 class="modal-title" id="edit-product-modal-label">修改产品</h4>
                     </div>
                     <div class="modal-body">
