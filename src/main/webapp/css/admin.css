@@ -25,12 +25,8 @@ div.modal-footer-div{
     text-align: center;
 }
 div.modal-body-div{
-    text-align: left;
     margin: 0 auto;
     width: 60%;
-}
-div.modal-body-input-div{
-    margin: 0 auto;
 }
 button.modal-footer-btn{
     margin-left: 200px;
@@ -41,4 +37,8 @@ div.operation-btn-div{
 }
 div.modal-header{
     text-align: left;
+}
+
+div.listDataTableDiv th{
+    height:55px ;
 }

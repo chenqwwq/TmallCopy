@@ -9,12 +9,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>编辑属性</title>
+    <title>属性管理</title>
     <%@include file="../public/adminHeader.jsp"%>
     <%@include file="../public/adminNavigator.jsp"%>
 </head>
 <body>
     <div class="workingArea">
+        <!-- 面包屑导航 -->
         <ol class="breadcrumb">
             <li><a href="/admin/category">所有分类</a></li>    <!-- 跳到分类页面 -->
             <li><a href="?cid=${category.id}">${category.name}</a></li>    <!-- 本页面 -->

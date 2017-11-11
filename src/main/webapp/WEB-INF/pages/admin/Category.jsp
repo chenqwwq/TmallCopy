@@ -48,7 +48,7 @@
                         <td><img height="40px" src="/img/category/${c.id}.jpg"></td>
                         <td id="cname">${c.name}</td>
                         <td><a href="property?cid=${c.id}"><span class="glyphicon glyphicon-th-list"></span></a></td>
-                        <td><a href="admin_product_list?cid=${c.id}"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
+                        <td><a href="product?cid=${c.id}"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
                         <!-- 此处直接把模态框需要的属性声明为标签的属性 也可以利用节点之间的关系找到相应节点并提取val( -->
                         <td><a id="edit_category" data-toggle="modal" data-target="#updateCategoryModal"><span class="glyphicon glyphicon-edit"></span></a></td>
                         <td><a id="delete_category"><span class="glyphicon glyphicon-trash"></span></a></td>

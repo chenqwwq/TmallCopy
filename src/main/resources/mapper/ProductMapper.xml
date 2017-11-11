@@ -39,8 +39,9 @@
     from product
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select id, cid, name, subTitle, originalPrice, promotePrice, stock, createDate
     from product
+    WHERE cid = #{cid,jdbcType=INTEGER}
   </select>
 </mapper>

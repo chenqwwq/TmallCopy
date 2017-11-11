@@ -122,11 +122,4 @@ public class CategoryController {
         }
         return new Result();
     }
-
-
-    private void show(List list){
-        for(Object object : list){
-            System.out.println(object);
-        }
-    }
 }

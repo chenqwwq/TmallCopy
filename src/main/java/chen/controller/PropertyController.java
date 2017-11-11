@@ -46,7 +46,7 @@ public class PropertyController {
         model.addAttribute("page",page);
         model.addAttribute("category",category);
         return "/admin/Property";
-    }
+    }   
 
     @DeleteMapping(URL)
     @ResponseBody

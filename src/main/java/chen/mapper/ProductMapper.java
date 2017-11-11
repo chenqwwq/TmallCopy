@@ -1,8 +1,11 @@
 package chen.mapper;
 
 import chen.entity.Product;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -10,7 +13,7 @@ public interface ProductMapper {
 
     Product selectByPrimaryKey(Integer id);
 
-    List<Product> selectAll();
+    List<Product> selectAll(Integer cid);
 
     int updateByPrimaryKey(Product record);
 }
