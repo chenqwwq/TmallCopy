@@ -1,6 +1,7 @@
 package chen.service.impl;
 
 import chen.entity.Category;
+import chen.entity.CategoryExample;
 import chen.mapper.CategoryMapper;
 import chen.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> list() {
-        return categoryMapper.selectAll();
+        CategoryExample categoryExample = new CategoryExample();
+        categoryExample.setOrderByClause("id desc");
+        return categoryMapper.selectByExample(categoryExample);
     }
 
     @Override

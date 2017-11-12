@@ -1,6 +1,7 @@
 package chen.mapper;
 
 import chen.entity.Order;
+import chen.entity.OrderExample;
 import java.util.List;
 
 public interface OrderMapper {
@@ -8,9 +9,13 @@ public interface OrderMapper {
 
     int insert(Order record);
 
+    int insertSelective(Order record);
+
+    List<Order> selectByExample(OrderExample example);
+
     Order selectByPrimaryKey(Integer id);
 
-    List<Order> selectAll();
+    int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
 }

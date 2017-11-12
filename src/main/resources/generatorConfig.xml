@@ -10,10 +10,11 @@
     <!--<classPathEntry location=""/>-->
     <!--
         context:生成一组对象的环境
+        targetRuntime:
+            1.MyBatis3 默认,生成Example类
+            2.MyBatis3Simple  不生成Example类
     -->
-    <context id="mysql"
-             defaultModelType="flat"
-             targetRuntime="MyBatis3Simple">
+    <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3">
         <!--避免生成重复代码的插件-->
         <plugin type="chen.util.OverIsMergeablePlugin" />
 
@@ -55,7 +56,7 @@
         <!--
             SQL map的xml文件生成器
         -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="chen.mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成mapper类存放位置-->

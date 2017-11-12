@@ -1,6 +1,7 @@
 package chen.service.impl;
 
 import chen.entity.Product;
+import chen.entity.ProductExample;
 import chen.mapper.ProductMapper;
 import chen.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> list(int cid) {
-        return productMapper.selectAll(cid);
+        ProductExample productExample = new ProductExample();
+        productExample.setOrderByClause("id desc");
+        productExample.createCriteria().andCidEqualTo(cid);
+        return productMapper.selectByExample(productExample);
     }
 }

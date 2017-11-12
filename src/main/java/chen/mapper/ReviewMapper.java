@@ -1,6 +1,7 @@
 package chen.mapper;
 
 import chen.entity.Review;
+import chen.entity.ReviewExample;
 import java.util.List;
 
 public interface ReviewMapper {
@@ -8,9 +9,13 @@ public interface ReviewMapper {
 
     int insert(Review record);
 
+    int insertSelective(Review record);
+
+    List<Review> selectByExample(ReviewExample example);
+
     Review selectByPrimaryKey(Integer id);
 
-    List<Review> selectAll();
+    int updateByPrimaryKeySelective(Review record);
 
     int updateByPrimaryKey(Review record);
 }

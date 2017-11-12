@@ -1,6 +1,7 @@
 package chen.service.impl;
 
 import chen.entity.Property;
+import chen.entity.PropertyExample;
 import chen.mapper.PropertyMapper;
 import chen.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public List<Property> list(int cid) {
-        return propertyMapper.selectAll(cid);
+        PropertyExample propertyExample = new PropertyExample();
+        propertyExample.setOrderByClause("id desc");
+        propertyExample.createCriteria().andCidEqualTo(cid);
+        return propertyMapper.selectByExample(propertyExample);
     }
 }

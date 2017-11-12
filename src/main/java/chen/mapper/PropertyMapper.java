@@ -1,19 +1,21 @@
 package chen.mapper;
 
 import chen.entity.Property;
-import org.springframework.stereotype.Repository;
-
+import chen.entity.PropertyExample;
 import java.util.List;
 
-@Repository
 public interface PropertyMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Property record);
 
+    int insertSelective(Property record);
+
+    List<Property> selectByExample(PropertyExample example);
+
     Property selectByPrimaryKey(Integer id);
 
-    List<Property> selectAll(Integer cid);
+    int updateByPrimaryKeySelective(Property record);
 
     int updateByPrimaryKey(Property record);
 }

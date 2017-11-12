@@ -1,6 +1,7 @@
 package chen.mapper;
 
 import chen.entity.PropertyValue;
+import chen.entity.PropertyValueExample;
 import java.util.List;
 
 public interface PropertyValueMapper {
@@ -8,9 +9,13 @@ public interface PropertyValueMapper {
 
     int insert(PropertyValue record);
 
+    int insertSelective(PropertyValue record);
+
+    List<PropertyValue> selectByExample(PropertyValueExample example);
+
     PropertyValue selectByPrimaryKey(Integer id);
 
-    List<PropertyValue> selectAll();
+    int updateByPrimaryKeySelective(PropertyValue record);
 
     int updateByPrimaryKey(PropertyValue record);
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public class TestMybatisGenerator {
 
     public static void main(String[] args) throws Exception {
-        String today = "2017-11-04";
+        String today = "2017-11-12";
 
         SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
         Date now =sdf.parse(today);

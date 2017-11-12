@@ -7,16 +7,6 @@ public class Property {
 
     private String name;
 
-    private Category category;      //非数据库字段
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -27,16 +17,6 @@ public class Property {
 
     public Integer getCid() {
         return cid;
-    }
-
-    @Override
-    public String toString() {
-        return "Property{" +
-                "id=" + id +
-                ", cid=" + cid +
-                ", name='" + name + '\'' +
-                ", category=" + category +
-                '}';
     }
 
     public void setCid(Integer cid) {

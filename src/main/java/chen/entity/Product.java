@@ -5,8 +5,6 @@ import java.util.Date;
 public class Product {
     private Integer id;
 
-    private Integer cid;
-
     private String name;
 
     private String subTitle;
@@ -17,6 +15,8 @@ public class Product {
 
     private Integer stock;
 
+    private Integer cid;
+
     private Date createDate;
 
     public Integer getId() {
@@ -25,14 +25,6 @@ public class Product {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getCid() {
-        return cid;
-    }
-
-    public void setCid(Integer cid) {
-        this.cid = cid;
     }
 
     public String getName() {
@@ -75,25 +67,19 @@ public class Product {
         this.stock = stock;
     }
 
+    public Integer getCid() {
+        return cid;
+    }
+
+    public void setCid(Integer cid) {
+        this.cid = cid;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", cid=" + cid +
-                ", name='" + name + '\'' +
-                ", subTitle='" + subTitle + '\'' +
-                ", originalPrice=" + originalPrice +
-                ", promotePrice=" + promotePrice +
-                ", stock=" + stock +
-                ", createDate=" + createDate +
-                '}';
     }
 }
