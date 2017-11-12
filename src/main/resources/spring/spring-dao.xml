@@ -4,7 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="chen.mapper"/>
+    <context:component-scan base-package="mapper"/>
     <!--<context:component-scan base-package="chen.entity"/>-->
 
     <context:property-placeholder location="classpath:database.properties"/>
@@ -26,14 +26,14 @@
         <!-- 实体类的包所在,取用别名 -->
         <property name="typeAliasesPackage" value="chen.entity"/>
         <!-- 映射map的地址 -->
-        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:chen/mapper/*.xml"/>
         <property name="failFast" value="true"/>
     </bean>
 
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
         <!-- dao层接口 -->
-        <property name="basePackage" value="chen.mapper"/>
+        <property name="basePackage" value="mapper"/>
     </bean>
 
 </beans>

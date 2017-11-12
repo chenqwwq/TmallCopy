@@ -214,7 +214,6 @@
               <includes>
                   <include>**/*.properties</include>
                   <include>**/*.xml</include>
-                  <include>**/*.tld</include>
               </includes>
               <filtering>false</filtering>
           </resource>
@@ -223,7 +222,6 @@
               <includes>
                   <include>**/*.properties</include>
                   <include>**/*.xml</include>
-                  <include>**/*.tld</include>
               </includes>
               <filtering>false</filtering>
           </resource>

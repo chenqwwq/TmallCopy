@@ -1,9 +1,12 @@
-package chen.mapper;
+package mapper;
 
 import chen.entity.PropertyValue;
 import chen.entity.PropertyValueExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface PropertyValueMapper {
     int deleteByPrimaryKey(Integer id);
 

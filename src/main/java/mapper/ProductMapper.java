@@ -1,9 +1,12 @@
-package chen.mapper;
+package mapper;
 
 import chen.entity.Product;
 import chen.entity.ProductExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);
 

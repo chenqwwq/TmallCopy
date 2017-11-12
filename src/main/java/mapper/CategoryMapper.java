@@ -1,9 +1,12 @@
-package chen.mapper;
+package mapper;
 
 import chen.entity.Category;
 import chen.entity.CategoryExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface CategoryMapper {
     int deleteByPrimaryKey(Integer id);
 

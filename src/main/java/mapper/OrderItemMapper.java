@@ -1,9 +1,12 @@
-package chen.mapper;
+package mapper;
 
 import chen.entity.OrderItem;
 import chen.entity.OrderItemExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface OrderItemMapper {
     int deleteByPrimaryKey(Integer id);
 

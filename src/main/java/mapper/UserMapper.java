@@ -1,9 +1,12 @@
-package chen.mapper;
+package mapper;
 
 import chen.entity.User;
 import chen.entity.UserExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 

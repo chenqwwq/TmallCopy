@@ -1,9 +1,12 @@
-package chen.mapper;
+package mapper;
 
 import chen.entity.Review;
 import chen.entity.ReviewExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public interface ReviewMapper {
     int deleteByPrimaryKey(Integer id);
 

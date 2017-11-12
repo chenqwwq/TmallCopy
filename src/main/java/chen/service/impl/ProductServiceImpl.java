@@ -2,7 +2,7 @@ package chen.service.impl;
 
 import chen.entity.Product;
 import chen.entity.ProductExample;
-import chen.mapper.ProductMapper;
+import mapper.ProductMapper;
 import chen.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
