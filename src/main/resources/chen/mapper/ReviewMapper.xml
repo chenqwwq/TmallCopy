@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.ProductImageMapper">
-  <resultMap id="BaseResultMap" type="chen.entity.ProductImage">
+<mapper namespace="chen.mapper.ReviewMapper">
+  <resultMap id="BaseResultMap" type="chen.entity.Review">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -36,16 +38,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, pid, type
+    id, pid, uid, content, createDate
   </sql>
-  <select id="selectByExample" parameterType="chen.entity.ProductImageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="chen.entity.ReviewExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from productImage
+    from review
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -56,52 +58,74 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from productImage
+    from review
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from productImage
+    delete from review
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="chen.entity.ProductImage" useGeneratedKeys="true">
-    insert into productImage (pid, type)
-    values (#{pid,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="chen.entity.Review" useGeneratedKeys="true">
+    insert into review (pid, uid, content, 
+      createDate)
+    values (#{pid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="chen.entity.ProductImage" useGeneratedKeys="true">
-    insert into productImage
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="chen.entity.Review" useGeneratedKeys="true">
+    insert into review
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="pid != null">
         pid,
       </if>
-      <if test="type != null">
-        type,
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createDate != null">
+        createDate,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="pid != null">
         #{pid,jdbcType=INTEGER},
       </if>
-      <if test="type != null">
-        #{type,jdbcType=VARCHAR},
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="chen.entity.ProductImage">
-    update productImage
+  <update id="updateByPrimaryKeySelective" parameterType="chen.entity.Review">
+    update review
     <set>
       <if test="pid != null">
         pid = #{pid,jdbcType=INTEGER},
       </if>
-      <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        createDate = #{createDate,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="chen.entity.ProductImage">
-    update productImage
+  <update id="updateByPrimaryKey" parameterType="chen.entity.Review">
+    update review
     set pid = #{pid,jdbcType=INTEGER},
-      type = #{type,jdbcType=VARCHAR}
+      uid = #{uid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      createDate = #{createDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

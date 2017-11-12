@@ -1,4 +1,4 @@
-package mapper;
+package chen.mapper;
 
 import chen.entity.Product;
 import chen.entity.ProductExample;

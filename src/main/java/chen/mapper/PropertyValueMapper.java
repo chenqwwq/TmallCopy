@@ -1,4 +1,4 @@
-package mapper;
+package chen.mapper;
 
 import chen.entity.PropertyValue;
 import chen.entity.PropertyValueExample;

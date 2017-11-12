@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
     <title>产品管理</title>
@@ -19,7 +20,7 @@
 <body>
     <div class="workingArea">
         <ol class="breadcrumb">
-            <li><a href="/admin/category">所有分类</a></li>
+            <li><a href="${basePath}/admin/category">所有分类</a></li>
             <!-- 从跳转的方法中获取一个category属性 -->
             <li><a href="?cid=${category.id}">${category.name}</a></li>
             <li class="active">产品管理</li>
@@ -50,7 +51,7 @@
                             <td class="p-origin">${p.originalPrice}</td>
                             <td class="p-promote">${p.promotePrice}</td>
                             <td class="p-stock">${p.stock}</td>
-                            <td><a href="admin_productImage_list?pid=${p.id}"><span
+                            <td><a href="productImage?pid=${p.id}"><span
                                     class="glyphicon glyphicon-picture"></span></a></td>
                             <td><a href="admin_propertyValue_edit?pid=${p.id}"><span
                                     class="glyphicon glyphicon-th-list"></span></a></td>

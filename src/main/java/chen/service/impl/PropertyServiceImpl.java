@@ -2,7 +2,7 @@ package chen.service.impl;
 
 import chen.entity.Property;
 import chen.entity.PropertyExample;
-import mapper.PropertyMapper;
+import chen.mapper.PropertyMapper;
 import chen.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

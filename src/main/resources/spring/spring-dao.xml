@@ -4,7 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="mapper"/>
+    <context:component-scan base-package="chen.mapper"/>
     <!--<context:component-scan base-package="chen.entity"/>-->
 
     <context:property-placeholder location="classpath:database.properties"/>
@@ -33,7 +33,7 @@
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
         <!-- dao层接口 -->
-        <property name="basePackage" value="mapper"/>
+        <property name="basePackage" value="chen.mapper"/>
     </bean>
 
 </beans>

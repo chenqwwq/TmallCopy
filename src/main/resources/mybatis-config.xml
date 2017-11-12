@@ -36,6 +36,6 @@
         在spring-dao.xml中直接配置全部.xml文件
      -->
     <!--<mappers>-->
-        <!--<mapper resource="mapper/*.xml"/>-->
+        <!--<chen.mapper resource="chen.mapper/*.xml"/>-->
     <!--</mappers>-->
 </configuration>

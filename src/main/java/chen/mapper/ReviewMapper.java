@@ -1,4 +1,4 @@
-package mapper;
+package chen.mapper;
 
 import chen.entity.Review;
 import chen.entity.ReviewExample;

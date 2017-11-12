@@ -2,7 +2,7 @@ package chen.service.impl;
 
 import chen.entity.Category;
 import chen.entity.CategoryExample;
-import mapper.CategoryMapper;
+import chen.mapper.CategoryMapper;
 import chen.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
