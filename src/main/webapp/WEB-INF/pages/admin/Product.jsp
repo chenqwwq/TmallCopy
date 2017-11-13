@@ -28,7 +28,7 @@
 
         <div class="listDataTableDiv">
             <table class="table table-striped table-bordered table-hover table-condensed">
-                <thread>
+                <thead>
                     <tr>
                         <th>ID</th>
                         <th>产品名称</th>
@@ -41,7 +41,7 @@
                         <th width="42px">编辑</th>
                         <th width="42px">删除</th>
                     </tr>
-                </thread>
+                </thead>
                 <tbody>
                     <c:forEach items="${products}" var="p">
                         <tr>
