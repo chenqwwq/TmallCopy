@@ -57,7 +57,7 @@ public class ProductController {
     @DeleteMapping(URL)
     @ResponseBody
     private Result delete(@RequestParam("id") int id){
-        System.out.println("进入delete方法,id:"+id);
+//        System.out.println("进入delete方法,id:"+id);
         productService.delete(id);
         return new Result();
     }
@@ -65,7 +65,7 @@ public class ProductController {
     @PutMapping(URL)
     @ResponseBody
     private Result update(Product product){
-        System.out.println("进入update方法,product:"+product);
+     //   System.out.println("进入update方法,product:"+product);
         productService.update(product);
         return new Result();
     }
@@ -73,7 +73,7 @@ public class ProductController {
     @PostMapping(URL)
     @ResponseBody
     private Result add(Product product){
-        System.out.println("进入add方法,product:"+product);
+       // System.out.println("进入add方法,product:"+product);
         productService.add(product);
         return new Result();
     }

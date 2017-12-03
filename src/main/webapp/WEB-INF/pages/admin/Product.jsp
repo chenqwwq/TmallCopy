@@ -11,8 +11,8 @@
 <html>
 <head>
     <title>产品管理</title>
-    <%@include file="../public/adminHeader.jsp"%>
-    <%@include file="../public/adminNavigator.jsp"%>
+    <%@include file="../public/admin/adminHeader.jsp"%>
+    <%@include file="../public/admin/adminNavigator.jsp"%>
 </head>
 <!--
     产品界面
@@ -53,7 +53,7 @@
                             <td class="p-stock">${p.stock}</td>
                             <td><a href="productImage?pid=${p.id}"><span
                                     class="glyphicon glyphicon-picture"></span></a></td>
-                            <td><a href="admin_propertyValue_edit?pid=${p.id}"><span
+                            <td><a href="propertyValue?pid=${p.id}"><span
                                     class="glyphicon glyphicon-th-list"></span></a></td>
                             <td><a id="edit-product" data-toggle="modal" data-target="#edit-product-modal"><span
                                     class="glyphicon glyphicon-edit"></span></a></td>
@@ -66,7 +66,7 @@
         </div>
     </div>
     <div class="pageDiv">
-        <%@include file="../public/adminPage.jsp"%>
+        <%@include file="../public/admin/adminPage.jsp"%>
     </div>
     <div class="operation-btn-div">
         <!-- 增加商品的模态框的切换按钮 -->

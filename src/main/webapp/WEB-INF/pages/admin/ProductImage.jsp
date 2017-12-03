@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="basePath" value="${pageContext.request.contextPath}"/>
-<%@include file="../public/adminHeader.jsp"%>
-<%@include file="../public/adminNavigator.jsp"%>
+<%@include file="../public/admin/adminHeader.jsp"%>
+<%@include file="../public/admin/adminNavigator.jsp"%>
 <html>
 <head>
     <title>产品图片管理</title>
@@ -42,6 +42,9 @@
         .center{
             margin: 0 auto;
         }
+        .add-width{
+            width: 30%;
+        }
     </style>
     <script>
 
@@ -54,9 +57,11 @@
         }
 
         function changeDiv(element) {
-            var divId = 'div-'+element.attr("id");
+            //找到没有myHidden的div元素 该元素就是显示的div
             $("div.productImage-tab-div:not('.myHidden')").addClass('myHidden');
-            $("div#"+divId).removeClass('myHidden');
+            //构造需要显现的div
+            var divId = 'div#div-'+element.attr("id");
+            $(divId).removeClass('myHidden');
         }
 
         function tabSwitch(element) {
@@ -106,7 +111,7 @@
                         <a id="add-single" class="productImg-tab-a" href="#">单个图片</a>
                     </li>
                     <li>
-                        <a id="add-detail" class="add-productImg-a"  href="#">详细图片</a>
+                        <a id="add-detail" class="productImg-tab-a"  href="#">详细图片</a>
                     </li>
                 </ul>
             </li>
@@ -138,7 +143,7 @@
                                 </a>
                             </td>
                             <td class="pi-delete-td">
-                                <a id="delete-productImage-single-btn">
+                                <a id="delete-productImage-single-btn" class="productImage-delete">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </td>
@@ -172,7 +177,7 @@
                                 </a>
                             </td>
                             <td class="pi-delete-td">
-                                <a id="delete-productImage-detail-btn">
+                                <a id="delete-productImage-detail-btn" class="productImage-delete">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </td>
@@ -181,39 +186,73 @@
                     </tbody>
                 </table>
             </div>
+            <script type="application/javascript">
+                $(function () {
+                    $("a.productImage-delete").each(function () {
+                        $(this).click(function () {
+                            //获取需要删除的productImage的id
+                            var local_id = $(this).parent().siblings('.pi-id-td').text();
+                            //发送delete请求
+                            $.ajax({
+                                type:'post',
+                                data:{
+                                    id : local_id,
+                                    _method:'delete'
+                                },
+                                success:function (result) {
+                                    ResultHandler(result);
+                                },
+                                error:function () {
+                                    console.log("系统错误")
+                                }
+                            });
+                        });
+                    });
+                });
+            </script>
             <div id="div-add-single" class="productImage-tab-div myHidden">
-                <form method="post" action="admin_productImage_add" enctype="multipart/form-data">
-                    <table class="table table-striped table-bordered table-hover table-condensed" style="text-align: center">
+                <form method="post" enctype="multipart/form-data">
+                    <table class="add-width center table table-striped table-bordered table-hover table-condensed" style="text-align: center">
+                        <tr>
+                            <td class="bg-primary">添加单个图片</td>
+                        </tr>
                         <tr>
                             <td class="bg-danger">请选择本地图片 尺寸400X400 为佳</td>
                         </tr>
                         <tr>
                             <td align="center">
                                 <input type="file" name="image" />
+                                <input type="hidden" name="type" value="type_single">
+                                <input type="hidden" name="pid" value="${product.id}">
                             </td>
                         </tr>
                         <tr>
                             <td align="center">
-                                <button type="submit" class="btn btn-success">提 交</button>
+                                <button class="btn btn-success">提 交</button>
                             </td>
                         </tr>
                     </table>
                 </form>
             </div>
             <div id="div-add-detail" class="productImage-tab-div myHidden">
-                <form method="post" action="admin_productImage_add" enctype="multipart/form-data">
-                    <table class="table table-striped table-bordered table-hover table-condensed" style="text-align: center">
+                <form method="post" enctype="multipart/form-data">
+                    <table class="add-width center table table-striped table-bordered table-hover table-condensed" style="text-align: center">
+                        <tr>
+                            <td class="bg-primary">添加详细图片</td>
+                        </tr>
                         <tr>
                             <td class="bg-danger">请选择本地图片 尺寸400X400 为佳</td>
                         </tr>
                         <tr>
                             <td align="center">
                                 <input type="file" name="image" />
+                                <input type="hidden" name="type" value="type_detail">
+                                <input type="hidden" name="pid" value="${product.id}">
                             </td>
                         </tr>
                         <tr>
                             <td align="center">
-                                <button type="submit" class="btn btn-success">提 交</button>
+                                <button class="btn btn-success">提 交</button>
                             </td>
                         </tr>
                     </table>

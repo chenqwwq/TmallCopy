@@ -11,6 +11,16 @@ public class OrderItem {
 
     private Integer number;
 
+    private Product product;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -49,5 +59,17 @@ public class OrderItem {
 
     public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", pid=" + pid +
+                ", oid=" + oid +
+                ", uid=" + uid +
+                ", number=" + number +
+                ", product=" + product +
+                '}';
     }
 }

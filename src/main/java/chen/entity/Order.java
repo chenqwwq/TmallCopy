@@ -1,6 +1,9 @@
 package chen.entity;
 
+import chen.service.OrderService;
+
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     private Integer id;
@@ -28,6 +31,46 @@ public class Order {
     private Date confirmDate;
 
     private String status;
+
+    private int num;        //非数据库属性,该用户订单中产品的全部数目
+
+    private float total;    //非数据库属性，订单中的全部数额
+
+    private User user;  //记录用户信息
+
+    private List<OrderItem> orderItems;
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
 
     public Integer getId() {
         return id;
@@ -131,5 +174,55 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
+    }
+
+    public String getStatusDesc(){
+        String desc ="未知";
+        switch(status){
+            case OrderService.waitPay:
+                desc="待付款";
+                break;
+            case OrderService.waitDelivery:
+                desc="待发货";
+                break;
+            case OrderService.waitConfirm:
+                desc="待收货";
+                break;
+            case OrderService.waitReview:
+                desc="等评价";
+                break;
+            case OrderService.finish:
+                desc="完成";
+                break;
+            case OrderService.delete:
+                desc="刪除";
+                break;
+            default:
+                desc="未知";
+        }
+        return desc;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", uid=" + uid +
+                ", orderCode='" + orderCode + '\'' +
+                ", address='" + address + '\'' +
+                ", post='" + post + '\'' +
+                ", receiver='" + receiver + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", userMessage='" + userMessage + '\'' +
+                ", createDate=" + createDate +
+                ", payDate=" + payDate +
+                ", deliveryDate=" + deliveryDate +
+                ", confirmDate=" + confirmDate +
+                ", status='" + status + '\'' +
+                ", num=" + num +
+                ", total=" + total +
+                ", user=" + user +
+                ", orderItems=" + orderItems +
+                '}';
     }
 }

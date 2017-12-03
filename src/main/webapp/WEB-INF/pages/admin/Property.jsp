@@ -10,8 +10,8 @@
 <html>
 <head>
     <title>属性管理</title>
-    <%@include file="../public/adminHeader.jsp"%>
-    <%@include file="../public/adminNavigator.jsp"%>
+    <%@include file="../public/admin/adminHeader.jsp"%>
+    <%@include file="../public/admin/adminNavigator.jsp"%>
 </head>
 <body>
     <div class="workingArea">
@@ -53,7 +53,7 @@
             </table>
         </div>
         <div class="pageDiv">
-            <%@include file="../public/adminPage.jsp"%>
+            <%@include file="../public/admin/adminPage.jsp"%>
         </div>
         <div class="operation-btn-div">
             <button type="button" id="add-property" class="btn btn-default" data-toggle="modal" data-target="#addPropertyModal">新增属性</button>

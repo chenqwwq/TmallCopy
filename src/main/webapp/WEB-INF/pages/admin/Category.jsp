@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="basePath" value="${pageContext.request.contextPath}"/>
-<%@include file="../public/adminHeader.jsp"%>
-<%@include file="../public/adminNavigator.jsp"%>
+<%@include file="../public/admin/adminHeader.jsp"%>
+<%@include file="../public/admin/adminNavigator.jsp"%>
 <html>
 <head>
     <title>分类管理</title>
@@ -58,32 +58,7 @@
             </table>
         </div>
         <div class="pageDiv">
-            <%@include file="../public/adminPage.jsp"%>
-            <%--<div class="panel panel-warning addDiv">--%>
-            <%--<div class="panel-heading">新增分类</div>--%>
-            <%--<div class="panel-body">--%>
-            <%--<!-- 文件上传的post,因为ajax不会 所以直接使用form表单上传 -->--%>
-            <%--<form method="post" id="addForm" action="" enctype="multipart/form-data">--%>
-            <%--<table class="addTable">--%>
-            <%--<tr>--%>
-            <%--<td>分类名称</td>--%>
-            <%--<td><input  id="name" name="name" class="form-control"></td>--%>
-            <%--</tr>--%>
-            <%--<tr>--%>
-            <%--<td>分类图片</td>--%>
-            <%--<td>--%>
-            <%--<input id="categoryPic" accept="image/*" type="file" name="image" />--%>
-            <%--</td>--%>
-            <%--</tr>--%>
-            <%--<tr class="submitTR">--%>
-            <%--<td colspan="2" align="center">--%>
-            <%--<button class="btn btn-success">提 交</button>--%>
-            <%--</td>--%>
-            <%--</tr>--%>
-            <%--</table>--%>
-            <%--</form>--%>
-            <%--</div>--%>
-            <%--</div>--%>
+            <%@include file="../public/admin/adminPage.jsp"%>
         </div>
         <div class="operation-btn-div">
             <!--

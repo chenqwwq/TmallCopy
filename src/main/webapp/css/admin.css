@@ -1,14 +1,10 @@
 body{
     padding-top:70px;
 }
-
 div.workingArea{
     margin:0px 40px;
 }
-td{
-    font-size:14px;
-}
-th{
+td,th{
     font-size:14px;
 }
 div.listDataTableDiv{

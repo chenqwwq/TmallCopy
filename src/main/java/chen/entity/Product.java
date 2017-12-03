@@ -21,6 +21,16 @@ public class Product {
 
     private Category category;
 
+    private ProductImage firstProductImage;
+
+    public ProductImage getFirstProductImage() {
+        return firstProductImage;
+    }
+
+    public void setFirstProductImage(ProductImage firstProductImage) {
+        this.firstProductImage = firstProductImage;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -29,7 +39,7 @@ public class Product {
         this.category = category;
     }
 
-    public Integer getId() {
+    public Integer getId(){
         return id;
     }
 
@@ -91,5 +101,20 @@ public class Product {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", subTitle='" + subTitle + '\'' +
+                ", originalPrice=" + originalPrice +
+                ", promotePrice=" + promotePrice +
+                ", stock=" + stock +
+                ", cid=" + cid +
+                ", createDate=" + createDate +
+                ", category=" + category +
+                '}';
     }
 }
