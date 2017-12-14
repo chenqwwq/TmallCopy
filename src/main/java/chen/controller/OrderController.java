@@ -58,10 +58,4 @@ public class OrderController {
         orderService.update(o);
         return "redirect:admin/Order";
     }
-
-    private void show(List list){
-        for (Object o : list)
-            System.out.println(o);
-    }
-
 }

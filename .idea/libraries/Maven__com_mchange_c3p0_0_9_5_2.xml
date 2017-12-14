@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/mchange/c3p0/0.9.5.2/c3p0-0.9.5.2.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/mchange/c3p0/0.9.5.2/c3p0-0.9.5.2-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/mchange/c3p0/0.9.5.2/c3p0-0.9.5.2-sources.jar!/" />
     </SOURCES>

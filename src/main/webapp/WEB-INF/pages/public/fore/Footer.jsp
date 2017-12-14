@@ -5,10 +5,8 @@
   Time: 下午4:17
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" isELIgnored="false"%>
 
-<%--<%@include file="modal.jsp" %>--%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 
 <div id="footer"  class="footer" style="display: block;">
 
@@ -57,14 +55,11 @@
         </div>
 
     </div>
-
     <div style="clear:both">
-
     </div>
-
+    <img id="cateye" class="cateye" src="img/site/cateye.png">
     <div id="copyright" class="copyright">
         <div class="coptyrightMiddle">
-            <img id="cateye" class="cateye" src="img/site/cateye.png">
             <div class="white_link" >
                 <a href="#nowhere" style="padding-left:0px" >关于天猫</a>
                 <a href="#nowhere" > 帮助中心</a>

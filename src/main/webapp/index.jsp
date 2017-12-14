@@ -1,8 +1,4 @@
-<html>
-<body>
-<%@include file="WEB-INF/pages/public/fore/Header.jsp"%>
-<%@include file="WEB-INF/pages/public/fore/Top.jsp"%>
-<%--<%@include file="WEB-INF/pages/public/fore/Search.jsp"%>--%>
-<%--<%@include file="WEB-INF/pages/public/fore/Footer.jsp"%>--%>
-</body>
-</html>
+<!-- 实现页面的转发 地址栏不变 -->
+<%
+    request.getRequestDispatcher("/home").forward(request,response);
+%>

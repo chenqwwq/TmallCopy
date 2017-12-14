@@ -84,7 +84,6 @@ public class CategoryController {
     private String add(/* 此处为了直接能把name放置到category中 不声明为RequestParam */Category category, HttpSession session,
                        MultipartFile image) throws IOException {
         categoryService.add(category);          //增加操作的核心步骤
-//        System.out.println("接收到的文件信息"+uploadedImageFile.getImage().getOriginalFilename());          //测试操作
         File file = new File(new File(session.getServletContext().getRealPath("img/category")),
                 category.getId()+".jpg");    //获取存储照片的真实文件位置
         if(!file.getParentFile().exists())
@@ -106,7 +105,6 @@ public class CategoryController {
     @PutMapping(URL)
     @ResponseBody
     private Result update(Category category,HttpSession session, MultipartFile image ) {
-//        System.out.println("<-----进入update方法----->");
         categoryService.update(category);
         if(null!=image &&!image.isEmpty()){
             File  imageFolder= new File(session.getServletContext().getRealPath("img/category"));

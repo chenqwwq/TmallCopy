@@ -31,12 +31,6 @@ public class ProductController {
         this.categoryService = categoryService;
     }
 
-    private void show(List list){
-        for(Object object : list){
-            System.out.println(object);
-        }
-    }
-
     @GetMapping(URL)
     private String get(int cid,Model model,Page page){
         //获取相应的分类信息
@@ -57,7 +51,6 @@ public class ProductController {
     @DeleteMapping(URL)
     @ResponseBody
     private Result delete(@RequestParam("id") int id){
-//        System.out.println("进入delete方法,id:"+id);
         productService.delete(id);
         return new Result();
     }
@@ -65,7 +58,6 @@ public class ProductController {
     @PutMapping(URL)
     @ResponseBody
     private Result update(Product product){
-     //   System.out.println("进入update方法,product:"+product);
         productService.update(product);
         return new Result();
     }
@@ -73,7 +65,6 @@ public class ProductController {
     @PostMapping(URL)
     @ResponseBody
     private Result add(Product product){
-       // System.out.println("进入add方法,product:"+product);
         productService.add(product);
         return new Result();
     }

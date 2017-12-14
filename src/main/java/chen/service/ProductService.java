@@ -1,5 +1,6 @@
 package chen.service;
 
+import chen.entity.Category;
 import chen.entity.Product;
 
 import java.util.List;
@@ -14,4 +15,7 @@ public interface ProductService {
     Product get(int id);
     List<Product> list(int cid);
     void setFirstProductImage(Product product);
+    void fill(Category category);
+    void fill(List<Category> categories);
+    void fillByGroup(List<Category> categories);
 }
