@@ -7,6 +7,16 @@ public class User {
 
     private String password;
 
+    private int waitPayOrderCount;  //等待付款的订单总数 即购物车的数量
+
+    public int getWaitPayOrderCount() {
+        return waitPayOrderCount;
+    }
+
+    public void setWaitPayOrderCount(int waitPayOrderCount) {
+        this.waitPayOrderCount = waitPayOrderCount;
+    }
+
     public Integer getId() {
         return id;
     }

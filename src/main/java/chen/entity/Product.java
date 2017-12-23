@@ -1,6 +1,7 @@
 package chen.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Product {
     private Integer id;
@@ -21,7 +22,47 @@ public class Product {
 
     private Category category;
 
-    private ProductImage firstProductImage;
+    private ProductImage firstProductImage;    //在首页显示的商品图片
+
+    private List<ProductImage> singleImage;     //单个照片集合
+
+    private List<ProductImage> detailImage;     //detail照片集合
+
+    private int saleCount;  //销量
+
+    private int reviewCount;    //评论总数
+
+    public int getSaleCount() {
+        return saleCount;
+    }
+
+    public void setSaleCount(int saleCount) {
+        this.saleCount = saleCount;
+    }
+
+    public int getReviewCount() {
+        return reviewCount;
+    }
+
+    public void setReviewCount(int reviewCount) {
+        this.reviewCount = reviewCount;
+    }
+
+    public List<ProductImage> getDetailImage() {
+        return detailImage;
+    }
+
+    public void setDetailImage(List<ProductImage> detailImage) {
+        this.detailImage = detailImage;
+    }
+
+    public List<ProductImage> getSingleImage() {
+        return singleImage;
+    }
+
+    public void setSingleImage(List<ProductImage> singleImage) {
+        this.singleImage = singleImage;
+    }
 
     public ProductImage getFirstProductImage() {
         return firstProductImage;

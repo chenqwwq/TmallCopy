@@ -144,7 +144,7 @@
                         <c:forEach items="${c.products}" var="p" varStatus="st">
                             <c:if test="${st.count<=5}">
                                 <div class="one-product" >
-                                    <a href="foreproduct?pid=${p.id}"><img width="100px" src="img/productSingle_middle/${p.firstProductImage.id}.jpg"></a>
+                                    <a href="product?pid=${p.id}"><img width="100px" src="img/productSingle_middle/${p.firstProductImage.id}.jpg"></a>
                                     <a class="productItemDescLink" href="foreproduct?pid=${p.id}">
                                         <span class="productItemDesc">[热销]
                                             <!-- 截取name的前20个字符 -->

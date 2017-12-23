@@ -1,13 +1,12 @@
 package chen.service.impl;
 
-import chen.entity.Category;
-import chen.entity.Product;
-import chen.entity.ProductExample;
-import chen.entity.ProductImage;
+import chen.entity.*;
 import chen.mapper.CategoryMapper;
 import chen.mapper.ProductMapper;
+import chen.service.OrderItemService;
 import chen.service.ProductImageService;
 import chen.service.ProductService;
+import chen.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,12 +25,16 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
     private final CategoryMapper categoryMapper;
     private final ProductImageService productImageService;
+    private final OrderItemService orderItemService;
+    private final ReviewService reviewService;
 
     @Autowired
-    public ProductServiceImpl(ProductMapper productMapper, CategoryMapper categoryMapper, ProductImageService productImageService) {
+    public ProductServiceImpl(ProductMapper productMapper, CategoryMapper categoryMapper, ProductImageService productImageService, OrderItemService orderItemService, ReviewService reviewService) {
         this.productMapper = productMapper;
         this.categoryMapper = categoryMapper;
         this.productImageService = productImageService;
+        this.orderItemService = orderItemService;
+        this.reviewService = reviewService;
     }
 
 
@@ -123,10 +126,24 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
+    @Override
+    public void setSaleAndReviewNumber(Product product) {
+        product.setSaleCount(orderItemService.getSaleCount(product.getId()));
+        product.setReviewCount(reviewService.getCount(product.getId()));
+    }
+
+    @Override
+    public void steSaleAndReviewNumber(List<Product> products) {
+        for (Product product:products)
+            setSaleAndReviewNumber(product);
+    }
+
     public void setFirstProductImage(List<Product> products){
         if(!products.isEmpty()){
             for (Product product:products)
                 setFirstProductImage(product);
         }
     }
+
+
 }

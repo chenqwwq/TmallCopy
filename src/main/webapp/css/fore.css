@@ -167,6 +167,13 @@ div.searchBelow a{
     padding: 0px 20px 0px 20px;
     font-size: 14px;
 }
+
+div.simpleSearchOutDiv{
+    position: relative;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
 img.simpleLogo{
     position: absolute;
     left: 10px;

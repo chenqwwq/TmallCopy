@@ -5,7 +5,6 @@ import chen.entity.OrderItemExample;
 import chen.mapper.OrderItemMapper;
 import chen.mapper.ProductMapper;
 import chen.service.OrderItemService;
-import chen.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +14,17 @@ import java.util.List;
 public class OrderItemServiceImpl implements OrderItemService{
 
     private final OrderItemMapper orderItemMapper;
-    private final ProductService productService;
+    /**
+     *   此处直接Autowired,结果出现了BeanCurrentlyInCreationException, 是循环依赖导致
+     *      因此改为用productMapper
+     */
+    private final ProductMapper productMapper;
+//    private final ProductService productService;
 
     @Autowired
-    public OrderItemServiceImpl(OrderItemMapper orderItemMapper, ProductService productService) {
+    public OrderItemServiceImpl(OrderItemMapper orderItemMapper, ProductMapper productMapper) {
         this.orderItemMapper = orderItemMapper;
-        this.productService = productService;
+        this.productMapper = productMapper;
     }
 
     @Override
@@ -39,7 +43,7 @@ public class OrderItemServiceImpl implements OrderItemService{
      * @param orderItem
      */
     private void LoadOther(OrderItem orderItem){
-        orderItem.setProduct(productService.get(orderItem.getPid()));
+        orderItem.setProduct(productMapper.selectByPrimaryKey(orderItem.getPid()));
     }
 
     private void LoadOther(List<OrderItem> orderItems){
@@ -70,5 +74,20 @@ public class OrderItemServiceImpl implements OrderItemService{
     @Override
     public void update(OrderItem orderItem) {
         orderItemMapper.updateByPrimaryKey(orderItem);
+    }
+
+    @Override
+    public int getSaleCount(int pid) {
+        //创建OrderItem的搜索条件
+        OrderItemExample orderItemExample = new OrderItemExample();
+        orderItemExample.createCriteria()
+                .andPidEqualTo(pid);
+        //获取所有对应的OrderItem
+        List<OrderItem> orderItems = orderItemMapper.selectByExample(orderItemExample);
+        //计算全部number的总和
+        int count = 0;
+        for (OrderItem orderItem : orderItems)
+            count += orderItem.getNumber();
+        return count;
     }
 }

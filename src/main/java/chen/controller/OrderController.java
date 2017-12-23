@@ -44,7 +44,7 @@ public class OrderController {
         List<Order> orderList = orderService.list();
         page.setTotal((int) new PageInfo<>(orderList).getTotal());
         for (Order order : orderList) {
-            orderService.fillOrder(order);
+            orderService.loadOrder(order);
         }
         model.addAttribute("page",page);
         model.addAttribute("orderList",orderList);

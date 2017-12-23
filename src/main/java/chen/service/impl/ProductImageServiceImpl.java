@@ -1,9 +1,11 @@
 package chen.service.impl;
 
+import chen.entity.Product;
 import chen.entity.ProductImage;
 import chen.entity.ProductImageExample;
 import chen.mapper.ProductImageMapper;
 import chen.service.ProductImageService;
+import chen.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,12 +41,20 @@ public class ProductImageServiceImpl implements ProductImageService{
     }
 
     @Override
-    public List list(int productId, String type) {
+    public List<ProductImage> list(int pid, String type) {
         ProductImageExample productImageExample = new ProductImageExample();
         productImageExample.setOrderByClause("id desc");
         productImageExample.createCriteria()
-                .andPidEqualTo(productId)
+                .andPidEqualTo(pid)
                 .andTypeEqualTo(type);
         return productImageMapper.selectByExample(productImageExample);
+    }
+
+    @Override
+    public void LoadImage(Product product,String type) {
+        if(type.equals(ProductImageService.type_single))
+            product.setSingleImage(list(product.getId(), type));
+        else
+            product.setDetailImage(list(product.getId(), type));
     }
 }

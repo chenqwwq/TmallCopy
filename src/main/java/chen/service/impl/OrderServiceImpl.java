@@ -5,9 +5,7 @@ package chen.service.impl;
  *      需要user信息和OrderItem的list
  */
 
-import chen.entity.Order;
-import chen.entity.OrderExample;
-import chen.entity.OrderItem;
+import chen.entity.*;
 import chen.mapper.OrderMapper;
 import chen.service.OrderItemService;
 import chen.service.OrderService;
@@ -61,7 +59,7 @@ public class OrderServiceImpl implements OrderService{
      * @param order
      */
     @Override
-    public void fillOrder(Order order){
+    public void loadOrder(Order order){
         List<OrderItem> orderItems = order.getOrderItems();
         int num = 0;
         float total = 0.0f;
@@ -93,5 +91,18 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void update(Order order) {
         orderMapper.updateByPrimaryKey(order);
+    }
+
+    @Override
+    public void loadWaitPayCount(User user) {
+        //创建搜索模板
+        OrderExample orderExample = new OrderExample();
+        //添加搜索条件
+        //购物车数目为等待支付并且uid一致
+        orderExample.createCriteria()
+                .andStatusEqualTo(OrderService.waitPay)
+                .andUidEqualTo(user.getId());
+        //设置属性
+        user.setWaitPayOrderCount(orderMapper.selectByExample(orderExample).size());
     }
 }

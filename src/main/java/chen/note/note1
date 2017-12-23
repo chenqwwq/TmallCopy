@@ -1,0 +1,12 @@
+SpringMVC
+    Model和Request和Session都具有保存数据的作用
+        其中Model和Request保存的数据都是在Request Scope中(Model好像并不是完全的request,详细的再看),而Session处于Session Scope
+
+
+
+    @ModelAttribute("keyName")
+        1.该注解在方法层面
+            为每一个在同一个Controller的方法的Model添加一个keyName的属性,该标注方法的返回值便为属性的值
+        2.该注解在参数层面
+            从请求的Model中获取一个keyName的属性,如果没有会自己初始化一个
+        3.SessionAttribute等注解效果类似
