@@ -17,6 +17,6 @@
 	<link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 	<script src="/js/bootstrap/bootstrap.min.js"></script>
 	<link href="/css/fore.css" rel="stylesheet">
-	<script src="/js/admin.js"></script>
+	<script src="/js/fore.js"></script>
     </head>
 </html>

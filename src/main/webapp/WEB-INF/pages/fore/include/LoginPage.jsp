@@ -10,75 +10,6 @@
 <html>
 <head>
     <title>登录界面</title>
-    <style type="text/css">
-        div#login-div{
-            position: relative;
-        }
-        img#loginBackgroundImg{
-            display: block;
-            margin: 0px auto;
-            width: 100%;
-        }
-        div.simpleLogo{
-            margin-top: 40px;
-            margin-bottom: 40px;
-            margin-left: 100px;
-        }
-        div#login-div-inside{
-            width: 400px;
-            height: 500px;
-            position: absolute;
-            right: 60px;
-            top: 120px;
-            background-color: white ;
-            z-index: 1;
-        }
-        span#login-title{
-            margin-top: 35px;
-            display:inline-block;
-            margin-left:30px;
-            font-size:16px;
-            font-weight:bold;
-        }
-        /*div.login-input-div label{*/
-            /*width: 40px;*/
-            /*height: 40px;*/
-            /*text-align: center;*/
-            /*background-color: #ddd;*/
-            /*margin-left: 30px;*/
-            /*margin-top: 25px;*/
-            /*margin-bottom: 0;*/
-        /*}*/
-        div.login-input-div div.input-group label span{
-            font-size: 20px;
-        }
-        div.login-input-div div.input-group input{
-            height: 47px;
-        }
-        div.login-input-div {
-            margin-left: 30px;
-            margin-right: 30px;
-            margin-top: 30px;
-        }
-        button.login-btn{
-            background-color: #ff0036;
-            width: 100%;
-            height: 47px;
-            margin-top: 30px;
-            color: white;
-            font-weight: 500;
-            font-size: 19px;
-        }
-        div.login-link{
-            text-align: right;
-            margin-top: 40px;
-            margin-right: 20px;
-        }
-        div.login-link a{
-            margin-right: 5px;
-            margin-left: 5px;
-        }
-    </style>
     <script>
         $(function () {
             //如果msg对象不为空表示登录失败
@@ -125,7 +56,7 @@
                         <label for="login-name" class="input-group-addon">
                             <span class=" glyphicon glyphicon-user"></span>
                         </label>
-                        <input id="login-name" class="form-control" name="name" placeholder="手机/会员名/邮箱" type="text">
+                        <input id="login-name" class="form-control login-input" name="name" placeholder="手机/会员名/邮箱">
                     </div>
                     <br/>
                     <div class="input-group">

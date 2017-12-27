@@ -10,54 +10,7 @@
     <head>
         <title>注册界面</title>
         <style type="text/css">
-            .bottom-line{
-                width: 25%;
-                display: inline-block;
-                line-height: 47px;
-                text-align: center;
-                font-weight: 400;
-                font-size: 18px;
-                color: #999 ;
-            }
-            div.register-progress ol.register-ol{
-                width: 80%;
-                margin: 0 20%;
-                padding-left:0;
-            }
-            div.register-progress{
-                border-bottom: 3px solid #e6e6e6;
-                width: 60%;
-                height: 50px;
-                position: relative;
-                margin: 0 auto;
-            }
-            div.register-progress ol .active{
-                border-bottom: 3px solid #ff4000;
-                color: black;
-            }
-            form.register-form{
-                width: 100%;
-            }
-            .gray-btn{
-                margin-left: 150px !important;
-                margin-top: 20px !important;
-                width: 200px;
-                color: #FFF !important;;
-                border: 1px solid transparent;
-                background-color: #dedede;
-            }
-            div.register-div{
-                width: 500px;
-                margin: 20px auto;
-                /*margin-left: 450px !important;*/
-                /*margin-bottom: 300px !important;*/
-                height: 600px;
-            }
-            div.register-back{
-                margin-left: 20px;
-                text-align: center;
-                padding-right: 280px;
-            }
+
         </style>
     </head>
     <body>

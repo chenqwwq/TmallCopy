@@ -14,10 +14,7 @@ import chen.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -104,6 +101,20 @@ public class ForeController {
         }
     }
 
+    @PostMapping("/login_ajax")
+    @ResponseBody
+    private Result loginAjax(String name,String password,HttpSession httpSession){
+        //尝试获取User
+        User user = userService.verify(name,password);
+        if(user != null){
+            orderService.loadWaitPayCount(user);
+            httpSession.setAttribute("user",user);
+            return new Result();
+        }else{
+            return new Result("账号密码错误");
+        }
+    }
+
     /**
      * 检查用户名是否存在的业务逻辑
      * 因为前端的用户注册直接调用了
@@ -120,6 +131,11 @@ public class ForeController {
         return userService.verify(name)?new Result("用户名已经被注册!请重试"):new Result();
     }
 
+    @GetMapping("/check_login")
+    @ResponseBody
+    private int CheckLogin(HttpSession httpSession){
+        return httpSession.getAttribute("user") != null?1:0;
+    }
 
     @PostMapping("/register")
     @ResponseBody
@@ -135,6 +151,7 @@ public class ForeController {
     private String product(int pid,Model model){
         //获取相应product实例对象
         Product product = productService.get(pid);
+        productService.setSaleAndReviewNumber(product);
         //加载各类图片到product的属性
         productImageService.LoadImage(product,ProductImageService.type_single);
         productImageService.LoadImage(product,ProductImageService.type_detail);

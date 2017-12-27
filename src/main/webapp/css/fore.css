@@ -1,4 +1,3 @@
-
 body{
     font-size: 12px;
 }
@@ -375,3 +374,402 @@ div.one-product  img:hover {
 	opacity: 0.7;
 	filter: alpha(opacity = 70);
 }
+
+/**
+    LoginPage.jsp
+ */
+div#login-div{
+    position: relative;
+}
+img#loginBackgroundImg{
+    display: block;
+    margin: 0px auto;
+    width: 100%;
+}
+div.simpleLogo{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 100px;
+}
+div#login-div-inside{
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    right: 60px;
+    top: 120px;
+    background-color: white ;
+    z-index: 1;
+}
+span#login-title{
+    margin-top: 35px;
+    display:inline-block;
+    margin-left:30px;
+    font-size:16px;
+    font-weight:bold;
+}
+/*div.login-input-div label{*/
+    /*width: 40px;*/
+    /*height: 40px;*/
+    /*text-align: center;*/
+    /*background-color: #ddd;*/
+    /*margin-left: 30px;*/
+    /*margin-top: 25px;*/
+    /*margin-bottom: 0;*/
+/*}*/
+div.login-input-div div.input-group label span{
+    font-size: 20px;
+}
+div.login-input-div div.input-group input.login-input{
+    height: 47px;
+}
+div.login-input-div {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+button.login-btn{
+    background-color: #ff0036;
+    width: 100%;
+    height: 47px;
+    margin-top: 30px;
+    color: white;
+    font-weight: 500;
+    font-size: 19px;
+}
+div.login-link{
+    text-align: right;
+    margin-top: 40px;
+    margin-right: 20px;
+}
+div.login-link a{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+/**
+    RegisterPage.jsp
+*/
+li.bottom-line{
+    width: 25%;
+    display: inline-block;
+    line-height: 47px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    color: #999 ;
+}
+div.register-progress ol.register-ol{
+    width: 80%;
+    margin: 0 20%;
+    padding-left:0;
+}
+div.register-progress{
+    border-bottom: 3px solid #e6e6e6;
+    width: 60%;
+    height: 50px;
+    position: relative;
+    margin: 0 auto;
+}
+div.register-progress ol .active{
+    border-bottom: 3px solid #ff4000;
+    color: black;
+}
+form.register-form{
+    width: 100%;
+}
+.gray-btn{
+    margin-left: 150px !important;
+    margin-top: 20px !important;
+    width: 200px;
+    color: #FFF !important;;
+    border: 1px solid transparent;
+    background-color: #dedede;
+}
+div.register-div{
+    width: 500px;
+    margin: 20px auto;
+    /*margin-left: 450px !important;*/
+    /*margin-bottom: 300px !important;*/
+    height: 600px;
+}
+div.register-back{
+    margin-left: 20px;
+    text-align: center;
+    padding-right: 280px;
+}
+
+
+
+/**
+    ProductPage.jsp
+*/
+div.category-picture-div{
+    width: 100%;
+    margin: 10px auto;
+    text-align: center;
+}
+div.product-main-div{
+    width: 1024px;
+    margin: 10px auto;
+}
+div.imgAndInfo {
+    margin: 40px 20px;
+}
+div.imgAndInfo div.Img{
+    width: 400px;
+    float: left;
+}
+div.product-small-img{
+    width: 80%;
+    margin: 20px auto;
+}
+div.product-small-img img{
+    width: 60px;
+    height: 60px;
+    border: 2px solid white;
+}
+div.product-small-img img:hover{
+    border: 2px solid black;
+}
+/*
+  尝试使用仅仅子元素选择器
+ */
+div.Img > img{
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    border: 1px solid #f2f2f2;
+}
+div.imgAndInfo div.info{
+    padding: 0px 20px;
+    overflow: hidden;
+}
+div.info div.product-name{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0px 10px;
+}
+div.info div.product-subTitle-info{
+    color: #DD2727;
+    font-size: 12px;
+    margin: 0px 10px;
+}
+div.product-price-div div.juhuasuan{
+    background-color: #2DA77A;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+div.juhuasuan span.juhuasuan-title{
+    font-size: 18px;
+    font-weight: bold;
+}
+div.juhuasuan span.juhuasuan-time{
+    color: #FFC057;
+    font-weight: bold;
+}
+div.product-price div.gouwujuan-div{
+    margin-top: 5px;
+}
+div.gouwujuan-div span{
+    color: silver;
+}
+div.product-price div.origin-price-div{
+    margin-top: 5px;
+}
+div.product-price-div div.product-price{
+    background-image: url(../../img/site/priceBackground.png);
+    height: 102px;
+    padding: 10px;
+    color: #666666;
+}
+div.origin-price-div span.original-price{
+    text-decoration: line-through;
+    margin-left: 8px;
+}
+
+div.promotion-price-div span.promotion-price{
+    font-size: 30px;
+    font-weight: bold;
+    color: #c40000;
+    margin-left: 10px;
+}
+div.info div.product-count-div{
+    margin: 20px 0px;
+    border-top: 1px dotted #C9C9C9;
+    border-bottom: 1px dotted #C9C9C9;
+    padding: 10px;
+}
+div.product-count-div div{
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+    color: #999999;
+}
+div.info div.product-number{
+    color: silver;
+    height: 40px;
+}
+div.product-number span.buy-number-span{
+    width: 50px;
+    display: inline-block;
+    height: 35px;
+    padding:7px 0;
+    border: 1px solid #999999;
+}
+span.buy-number-span input.buy-number-input{
+    width: 30px;
+    border: 0px;
+}
+div.product-number span.arrow{
+    display: inline-block;
+    height: 35px;
+    width: 20px;
+    vertical-align: top;
+}
+span.arrow span.updown {
+    display: block;
+    width: 20px;
+    height: 15px;
+    text-align: center;
+    border: 1px solid silver;
+}
+span.updown img{
+    display: inline-block;
+    vertical-align: middle;
+}
+span.arrow span.updown-middle{
+    height: 5px;
+    display: block;
+}
+div.info div.service-commitment-div{
+    margin-top: 25px;
+}
+div.service-commitment-div span.service-commitment-link a{
+    margin-left: 5px;
+}
+div.buy-div{
+    margin-top: 30px;
+    text-align: center;
+}
+div.buy-div button{
+    width: 180px;
+    height: 40px;
+    display: inline-block;
+    margin: 0 10px;
+    border: 1px solid #c40000;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+}
+div.buy-div button:hover{
+    filter: brightness(1.1);
+}
+div.buy-div button.buy-button {
+    background-color: #FFEDED;
+    color: #c40000;
+}
+div.buy-div button.add-cart-button{
+    background-color: #c40000 !important;
+    color: white;
+}
+div.product-detailAndReview-div{
+    display: block;
+    width: 790px;
+    margin: 40px auto;
+}
+div.product-detailAndReview-div div.product-title-div{
+    height: 50px;
+    line-height: 50px;
+    font-size: 13px;
+    border: 1px solid silver;
+}
+div.product-title-div a{
+    padding: 0 20px;
+    border-right: 1px dotted #D2D2D2;
+    color: #333333;
+}
+div.product-title-div a.selected{
+    color: #B10000;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    position: relative;
+    border-top: 3px solid #B10000;
+    margin-top: -1px;
+    border-right: 1px solid #cfbfb1;
+    border-left: 1px solid #cfbfb1;
+}
+div.product-title-div a.selected::after{
+    border-color: #b00000 transparent transparent;
+    border-style: solid;
+    border-width: 5px;
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    margin-left: -5px;
+}
+/*div.product-title-div a.selected::before{*/
+    /*border-color: #b00000;*/
+    /*border-style: solid;*/
+    /*border-width: 1px;*/
+    /*content: "";*/
+    /*display: block;*/
+    /*height: 0px;*/
+    /*position: absolute;*/
+    /*top: -1px;*/
+    /*margin-left: -1px;*/
+/*}*/
+div.product-detail-div div.product-parameter-div{
+    border: 1px solid silver;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-bottom: 50px;
+}
+div.product-parameter-div span.product-parameter-title{
+    color: #999999;
+    font-weight: bold;
+}
+div.product-parameter-div div.product-parameter-list{
+    margin-top: 20px;
+}
+div.product-parameter-list span{
+    display: block;
+    width: 220px;
+    float: left;
+    padding: 9px 0;
+    color: #888888;
+}
+div.product-detailImg-list img{
+    width: 790px;
+}
+div.product-detailAndReview-div div.product-review-div{
+    border: 1px solid silver;
+    min-height: 100px;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+div.product-review-div span.no-review-prompt{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/**
+    loginModal页面
+ */
+div#login-modal div#login-modal-top-div{
+    width:350px;
+}
+div#login-modal div.alert{
+    margin: 0 auto;
+    padding-left: 45px;
+    text-align: left;
+    width: 258px;
+}
+

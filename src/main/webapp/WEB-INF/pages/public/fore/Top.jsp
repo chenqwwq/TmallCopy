@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <nav class="top">
-    <a href="${contextPath}">
+    <a href="${contextPath}/home">
         <span style="color:#C40000;margin:0px" class="glyphicon glyphicon-home"></span>
         天猫首页
     </a>

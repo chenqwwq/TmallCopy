@@ -11,3 +11,4 @@
 <%@include file="../public/fore/SimpleSearch.jsp"%>
 <%@include file="include/ProductPage.jsp"%>
 <%@include file="../public/fore/Footer.jsp"%>
+<%@include file="include/loginModal.jsp"%>
