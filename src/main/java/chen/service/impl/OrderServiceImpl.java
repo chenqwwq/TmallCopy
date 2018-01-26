@@ -102,6 +102,7 @@ public class OrderServiceImpl implements OrderService{
         orderExample.createCriteria()
                 .andStatusEqualTo(OrderService.waitPay)
                 .andUidEqualTo(user.getId());
+        System.out.println(orderMapper.selectByExample(orderExample).size());
         //设置属性
         user.setWaitPayOrderCount(orderMapper.selectByExample(orderExample).size());
     }

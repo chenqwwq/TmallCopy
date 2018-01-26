@@ -1,6 +1,7 @@
 package chen.service;
 
 import chen.entity.Category;
+import chen.entity.Product;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface CategoryService {
     void delete(int id);            //删除
     void add(Category category);    //增加
     void update(Category category); //更新
+    void loadCategory(Product product);//加载分类信息
 }

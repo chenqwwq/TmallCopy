@@ -3,6 +3,7 @@ package chen.service.impl;
 import chen.entity.User;
 import chen.entity.UserExample;
 import chen.mapper.UserMapper;
+import chen.service.OrderItemService;
 import chen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,12 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
+    private OrderItemService orderItemService;
 
     @Autowired
-    public UserServiceImpl(UserMapper userMapper) {
+    public UserServiceImpl(UserMapper userMapper, OrderItemService orderItemService) {
         this.userMapper = userMapper;
+        this.orderItemService = orderItemService;
     }
 
     @Override
@@ -44,6 +47,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public User get(int id) {
         return userMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 加载非数据库数据
+     */
+    private void LoadOther(User user){
+        //加载订单数量
+        /**
+         * 此处简单获取user对应的OrderItem的数目作为购物车件数
+         */
+        user.setWaitPayOrderCount(orderItemService.listByUser(user.getId()).size());
+    }
+
+    private void LoadOther(List<User> users){
+        for (User user : users)
+            LoadOther(user);
     }
 
 

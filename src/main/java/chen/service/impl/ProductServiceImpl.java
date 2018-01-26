@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 
 /**
@@ -80,8 +81,15 @@ public class ProductServiceImpl implements ProductService {
     public void setFirstProductImage(Product product) {
         //获取所有的单个图片
         List productImages = productImageService.list(product.getId(),ProductImageService.type_single);
-       product.setFirstProductImage(productImages.isEmpty()?null:(ProductImage) productImages.get(0));
+        product.setFirstProductImage(productImages.isEmpty()?null:(ProductImage) productImages.get(0));
     }
+
+    @Override
+    public void setFirstProductImage(List<Product> products) {
+        for (Product product : products)
+            setFirstProductImage(product);
+    }
+
 
     /**
      * Product的填充方法
@@ -138,12 +146,19 @@ public class ProductServiceImpl implements ProductService {
             setSaleAndReviewNumber(product);
     }
 
-    public void setFirstProductImage(List<Product> products){
-        if(!products.isEmpty()){
-            for (Product product:products)
-                setFirstProductImage(product);
-        }
+    @Override
+    public List<Product> search(String keyword) {
+        //创建筛选条件
+        ProductExample example = new ProductExample();
+        //模糊查询
+        example.createCriteria().andNameLike("%" + keyword + "%");
+        //正序排列
+        example.setOrderByClause("id desc");
+        //获得结果
+        List<Product> result = productMapper.selectByExample(example);
+        //填充结果
+        setFirstProductImage(result);
+        return result;
     }
-
 
 }

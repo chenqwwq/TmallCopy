@@ -16,6 +16,7 @@ nav.top{
      padding-bottom: 5px;
      border-bottom:1px solid  #e7e7e7;
  }
+
 nav.top span, nav.top a{
     color: #999;
     margin: 0px 10px 0px 10px;
@@ -290,6 +291,10 @@ div.carousel-of-product {
     left:365px;
     z-index: -1;
 }
+a.productItemDescLink span:hover{
+    text-decoration: underline;
+    color: #c40000;
+}
 /**
     首页的热销商品展示
  */
@@ -297,7 +302,7 @@ div.homepage-category-products{
     background-color: #F5F5F5;
     padding: 50px 10px 50px 10px;
     margin: 10px auto;
-    max-width: 1013px;
+    max-width: 1024px;
 }
 /**
     单独一个category的展示，其中有不止一个的product
@@ -772,4 +777,325 @@ div#login-modal div.alert{
     text-align: left;
     width: 258px;
 }
+
+/**
+    ProductByCategory.jsp页面
+ */
+div.category-page-div{
+    max-width: 1024px;
+    margin: 10px auto;
+}
+div.category-sort-div {
+    background-color: transparent;
+    margin: 40px 20px 20px 20px;
+    padding: 4px;
+}
+div.category-sort-div table.category-sort-table{
+    margin: 0 auto;
+    border-collapse: collapse;
+    display: inline-block;
+    height: 26px;
+}
+table.category-sort-table tr td{
+    border: 1px solid #CCCCCC;
+    padding: 3px;
+    height: 26px;
+}
+.grayColumn{
+    background-color: #F1EDEC;
+}
+table.category-sort-table input{
+    width: 50px;
+    height: 100%;
+    font-size: 12px;
+    border-width: 0px;
+}
+div.product-template-div{
+    display: inline-block;
+    float: left;
+    width: 225px;
+    height: 338px;
+    border: 2px solid #EEEEEE;
+    padding: 0;
+    margin: 12px 5px;
+    position: relative;
+}
+div.product-template-div > img{
+    width: 100%;
+    height: 200px;
+}
+div.product-template-div span.product-price{
+    font-size: 17px;
+    font-weight: bold;
+    color: #c40000;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+}
+div.product-template-div div.product-info{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height:25px;
+    line-height: 25px;
+    border: 1px solid #EEEEEE;
+    color: #999999;
+}
+div.product-info span.wangwang a.wangwanglink{
+    width: 25px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    border-left: 1px solid #EEEEEE;
+}
+div.product-template-div a.product-link{
+    color:black;
+    display: block;
+}
+div.product-template-div a.tmall-link{
+    text-decoration: underline;
+    position: absolute;
+    bottom: 32px;
+}
+div.product-info span.month-sale-count{
+    width: 80px;
+    height: 25px;
+    border-right: 1px solid #EEEEEE;
+    text-align: left;
+    display: inline-block;
+}
+div.product-info span.product-review{
+    width: 100px;
+    height: 25px;
+    text-align: left;
+    display: inline-block;
+}
+span.month-sale-count span.productDealNumber{
+    color: #B57C5B;
+    font-weight: bold;
+}
+span.product-review span.productReviewNumber{
+    color: #3388BB;
+
+}
+div.product-template-div:hover{
+    border: 2px solid #CC0000;
+}
+
+/*
+    SearchResultPage.jsp页面
+ */
+div.search-result-div{
+    max-width: 1024px;
+    margin: 10px auto;
+    min-height: 600px;
+}
+div.search-result-div div.empty-result-div{
+    margin: 0 auto;
+    width: 1024px;
+   text-align: center;
+}
+div.empty-result-div span{
+    color: #999999;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 auto;
+    display: inline-block;
+    padding-top: 60px;
+}
+
+/*
+    SettlementPage.jsp页面
+ */
+div.settlement-div{
+    width: 100%;
+    margin: 20px auto;
+    min-height: 500px;
+}
+div.address div.address-tip,div.product-info-tip{
+    font-size: 16px;
+    font-weight: bold;
+}
+div.address table.address-table{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+table.address-table tr{
+    margin-top: 10px;
+    display: block;
+}
+table.address-table td{
+    vertical-align: top;
+}
+table.address-table tr td:first-child{
+    width: 100px;
+}
+table.address-table td textarea{
+    width: 600px;
+    height: 50px;
+    border: 1px solid #AFAFAF;
+}
+table.address-table td input{
+    width: 600px;
+    border: 1px solid #AFAFAF;
+}
+div.settlement-div form div.product-info {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+div.product-info table.product-info-table{
+    width: 100%;
+    margin-top: 50px;
+    border-bottom: 3px solid #b2d1ff;
+}
+table.product-info-table thead tr:first-child{
+    padding: 10px;
+}
+table.product-info-table img.tmall-buy{
+    width: 15px;
+    height: 15px;
+}
+table.product-info-table a.market-link{
+    color: #333333;
+}
+table.product-info-table a.wangwanglink{
+    text-align: left;
+}
+span.wangwangGif{
+    display: inline-block;
+	width: 25px;
+	height: 25px;
+	background-image: url(../../img/site/wangwang.gif);
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-attachment: scroll;
+	background-position: -83px -0px;
+    position: relative;
+    top: 8px;
+    left: 2px;
+}
+table.product-info-table thead tr:first-child td{
+    padding: 10px 0;
+}
+table.product-info-table tr.row-border td{
+    /*background-color: #b2d1ff;*/
+    /*border-right: 2px solid #fff;*/
+    /*height: 3px;*/
+}
+table.product-info-table tbody.product-table-tbody tr:first-child td{
+    border-top: 3px solid #b2d1ff;
+}
+tbody.product-table-tbody img.orderItem-img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #E9E9E9;
+}
+tbody.product-table-tbody tr.orderItem-tr td{
+    padding: 10px 0;
+}
+div.product-info div.orderItem-sum-div{
+    background-color: #F2F6FF;
+    padding: 10px;
+    height: 50px;
+    color: #999999;
+}
+div.orderItem-sum-div div.pull-left span:first-child{
+    padding: 5px;
+    float: left;
+    margin-left: 30px;
+    vertical-align: bottom;
+}
+div.settlement-div div.submit-order-div{
+    text-align: right;
+    color: #999999;
+    margin-right: 50px;
+}
+div.submit-order-div span.orderItem-total-sum-span{
+    color: #c40000 !important;
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 80px;
+}
+div.submit-order-div button.submit-order-button{
+    height: 50px;
+    width: 180px;
+    background-color: #c40000 !important;
+    color: #F2F6FF !important;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-right: 65px;
+}
+div.orderItem-sum-div textarea{
+    background-color: white;
+    border: 1px solid #FFAD35;
+}
+
+/**
+    CartPage页面
+ */
+div.cart-div{
+    width: 100%;
+    min-height: 600px;
+}
+div.cart-div div.cart-products-div{
+}
+div.cart-products-div table.cart-products-table{
+    margin: 0 auto;
+    width: 1200px;
+}
+table.cart-products-table thead{
+    height: 50px;
+}
+table.cart-products-table tbody tr{
+    border: 1px solid #CCCCCC;
+}
+table.cart-products-table tr th,td{
+    padding :20px 20px;
+    padding-right: 0px !important;
+}
+img.cart-product-img{
+    padding: 1px;
+    border: 1px solid #EEEEEE;
+    width: 80px;
+    height: 80px;
+}
+div.cart-product-number-change-div input.cart-orderItem-num{
+    width: 20px;
+}
+tr.cart-product-tr span.cart-product-original-price{
+    text-decoration: line-through;
+    color: #9C9C9C;
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+}
+tr.cart-product-tr span.cart-product-promote-price,span.cart-product-sumPrice{
+    font-size: 14px;
+    font-weight: bold;
+    color: #C40000;
+}
+div.cart-div div.cart-foot{
+    height: 50px;
+    line-height: 50px;
+    width: 1200px;
+    margin: 50px auto;
+    background-color: #E5E5E5;
+}
+div.cart-foot span.cartSumNumber,span.cartSumPrice{
+    color: #c40000;
+    font-size: 16px;
+    font-weight: bold;
+}
+div.cart-foot button.createOrderButton{
+    margin-left: 30px;
+    height: 50px;
+    line-height: 40px !important;
+    width: 100px;
+    border: 0 solid #AAAAAA;
+    background-color: #AAAAAA;
+    color: white;
+    font-size: 17px;
+}
+
 

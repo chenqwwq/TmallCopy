@@ -60,7 +60,7 @@
                 </div>
                 <!-- 数据获取bug -->
                 <div class="product-count-div">
-                    <div>销量 <span class="redColor boldWord"> ${product.saleCount }</span></div>
+                    <div>销量 <span class="redColor boldWord"> ${product.saleCount}</span></div>
                     <div>累计评价 <span class="redColor boldWord"> ${product.reviewCount}</span></div>
                 </div>
                 <style type="text/css">
@@ -70,7 +70,7 @@
                     <span>数量</span>
                     <span>
                         <span class="buy-number-span">
-                            <input class="buy-number-input" type="text" value="1">
+                            <input class="buy-number-input" value="1">
                         </span>
 
                         <span class="arrow">
@@ -166,23 +166,117 @@
 </html>
 <script type="application/javascript">
     //script的返回值检测
-    function checkLogin() {
-        var res;
-        $.ajax({
-            type:'get',
-            async:false,
-            url:"/check_login",
-            dataType:"text",
-            success:function (result) {
-                res = result;
-                return result;
-            }
-        });
-        return res;
-    }
-    $("button.buy-button").click(function () {
-        alert("b:"+checkLogin())
-//        $("div#login-modal").modal("show");
+$(function () {
+    var big_img = $("div.Img img.product-big-img");
+    var stock = ${product.stock};
+    /**
+     * 预览图切换的鼠标触发事件
+     */
+    $("div.product-small-img img").mouseenter(function () {
+        // var name = $(this).attr("src").split("/")[2].split(".")[0];
+        //获取原来的图片地址
+        var oldSrc = $(this).attr("src");
+        //替换src中的二级目录 构造新的图片地址
+        var newSrc = oldSrc.replace("productSingle_small","productSingle");
+        //替换大图的地址
+        big_img.attr("src",newSrc);
     });
+    /**
+     * 添加增加/减少购买数量的箭头按钮的点击事件
+     *          增加一个边界控制：
+     *              不能大于库存
+     *              不能小于0
+     */
+    var buyNumber_input = $("input.buy-number-input");
+    $("span.arrow a.increase-number").click(function () {
+        var des = parseInt(buyNumber_input.val()) + 1;
+        buyNumber_input.val(des>stock?stock:des);
+    });
+    $("span.arrow a.decrease-number").click(function () {
+        var des = parseInt(buyNumber_input.val()) - 1;
+        buyNumber_input.val(des<1?1:des);
+    });
+
+    /**
+     * 商品详情和商品评价的切换函数
+     */
+    $("div.product-title-div a").click(function () {
+        //判断该元素是否具有selected属性
+        if($(this).hasClass("selected"))
+            return;
+        //获取原selected的元素
+        var selectA =$("div.product-title-div a.selected");
+        //删除原元素的selected属性
+        selectA.removeClass("selected");
+        //构建需要显示的divId
+        $("div."+selectA.attr("id")+"-div").hide();
+        //为该元素加上selected属性
+        $(this).addClass("selected");
+        //显示对应的div
+        $("div."+$(this).attr("id")+"-div").show();
+    });
+
+    /**
+     * 购买数量的检查
+     */
+    var buyNum_input = $("input.buy-number-input");
+    buyNum_input.change(function () {
+        var buyNum = buyNum_input.val();
+        buyNum = parseInt(buyNum);
+        if(isNaN(buyNum))
+            buyNum = 1;
+        if(buyNum > stock)
+            buyNum = stock;
+        if(buyNum < 0)
+            buyNum = 1;
+        buyNum_input.val(buyNum);
+    });
+
+    /**
+     * 立即购买的点击事件
+     */
+    $("button.buy-button").click(function () {
+        if(checkLogin() === 'false')
+            //如果没有登录则显示login-modal 县实现登录
+            $("div#login-modal").modal('show');
+        else{
+            //在已经登录的情况下，开始进行购买操作
+            //1、获取pid和num
+            var pid = ${product.id};
+            var num = $("input.buy-number-input").val();
+            location.href = "buy?pid="+pid+"&num="+num;
+        }
+    });
+
+    /**
+     * 添加到购物车的点击事件
+     */
+    $("button.add-cart-button").click(function () {
+        if(checkLogin() === 'false')
+            $("div#login-modal").modal('show');
+        else{
+            //获取需要的数据
+            var pid = ${product.id};
+            var num = $("input.buy-number-input").val();
+            //发送Ajax异步请求
+            $.ajax({
+                url:"addCart",
+                type:"post",
+                data:{
+                    pid:pid,
+                    num:num
+                },
+                success:function (result) {
+                    if(result === 'success'){
+                        alert("添加成功");
+                    }else{
+                        alert("添加失败");
+                    }
+                }
+            });
+        }
+    });
+
+});
 </script>
 

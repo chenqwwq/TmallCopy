@@ -2,6 +2,7 @@ package chen.service.impl;
 
 import chen.entity.Category;
 import chen.entity.CategoryExample;
+import chen.entity.Product;
 import chen.mapper.CategoryMapper;
 import chen.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void update(Category category) {
         categoryMapper.updateByPrimaryKey(category);
+    }
+
+    @Override
+    public void loadCategory(Product product) {
+        //通过product的id获取对应分类
+       product.setCategory(get(product.getId()));
     }
 }

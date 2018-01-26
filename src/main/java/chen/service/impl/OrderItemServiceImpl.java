@@ -2,9 +2,12 @@ package chen.service.impl;
 
 import chen.entity.OrderItem;
 import chen.entity.OrderItemExample;
+import chen.entity.Product;
+import chen.entity.ProductImage;
 import chen.mapper.OrderItemMapper;
 import chen.mapper.ProductMapper;
 import chen.service.OrderItemService;
+import chen.service.ProductImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,7 @@ import java.util.List;
 public class OrderItemServiceImpl implements OrderItemService{
 
     private final OrderItemMapper orderItemMapper;
+    private final ProductImageService productImageService;
     /**
      *   此处直接Autowired,结果出现了BeanCurrentlyInCreationException, 是循环依赖导致
      *      因此改为用productMapper
@@ -22,8 +26,9 @@ public class OrderItemServiceImpl implements OrderItemService{
 //    private final ProductService productService;
 
     @Autowired
-    public OrderItemServiceImpl(OrderItemMapper orderItemMapper, ProductMapper productMapper) {
+    public OrderItemServiceImpl(OrderItemMapper orderItemMapper, ProductImageService productImageService, ProductMapper productMapper) {
         this.orderItemMapper = orderItemMapper;
+        this.productImageService = productImageService;
         this.productMapper = productMapper;
     }
 
@@ -43,7 +48,13 @@ public class OrderItemServiceImpl implements OrderItemService{
      * @param orderItem
      */
     private void LoadOther(OrderItem orderItem){
-        orderItem.setProduct(productMapper.selectByPrimaryKey(orderItem.getPid()));
+        //因为使用ProductService获取会导致循环依赖 所以使用productMapper
+        Product product = productMapper.selectByPrimaryKey(orderItem.getPid());
+        //另外加载ProductImage
+        List productImages = productImageService.list(product.getId(),ProductImageService.type_single);
+        product.setFirstProductImage(productImages.isEmpty()?null:(ProductImage) productImages.get(0));
+        //获取OrderIte对应的order
+        orderItem.setProduct(product);
     }
 
     private void LoadOther(List<OrderItem> orderItems){
@@ -89,5 +100,15 @@ public class OrderItemServiceImpl implements OrderItemService{
         for (OrderItem orderItem : orderItems)
             count += orderItem.getNumber();
         return count;
+    }
+
+    @Override
+    public List<OrderItem> listByUser(int uid) {
+        OrderItemExample orderItemExample = new OrderItemExample();
+        orderItemExample.createCriteria()
+                .andUidEqualTo(uid);
+        List<OrderItem> result = orderItemMapper.selectByExample(orderItemExample);
+        LoadOther(result);
+        return result;
     }
 }

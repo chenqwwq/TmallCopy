@@ -15,9 +15,11 @@ public interface ProductService {
     Product get(int id);
     List<Product> list(int cid);
     void setFirstProductImage(Product product);
+    void setFirstProductImage(List<Product> products);
     void fill(Category category);
     void fill(List<Category> categories);
     void fillByGroup(List<Category> categories);
     void setSaleAndReviewNumber(Product product);
     void setSaleAndReviewNumber(List<Product> products);
+    List<Product> search(String keyword);
 }

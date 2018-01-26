@@ -25,8 +25,7 @@
                     <c:forEach items="${categories}" var="category" varStatus="st">
                         <c:if test="${st.count <= 4}">
                             <span >
-                                <!-- 需要改写 -->
-                                <a href="nowhere" class="color-white">${category.name}</a>
+                                <a href="/category?cid=${category.id}" class="color-white">${category.name}</a>
                             </span>
                         </c:if>
 
@@ -38,7 +37,7 @@
                     <c:forEach items="${categories}" var="c">
                         <div class="one-category" id="categoury-${c.id}">
                             <span class="glyphicon glyphicon-link"></span>
-                            <a href="forecategory?cid=${c.id}">
+                            <a href="/category?cid=${c.id}">
                                  ${c.name}
                             </a>
                         </div>
@@ -53,7 +52,7 @@
                                     <!-- 如果subTitle不为空 -->
                                     <c:if test="${!empty p.subTitle}">
                                           <c:forEach items="${fn:split(p.subTitle, ' ')}" var="title" varStatus="st">
-                                              <a href="#nowhere">
+                                              <a href="product?pid=${p.id}">
                                                   ${title}
                                               </a>
                                           </c:forEach>
@@ -95,7 +94,7 @@
                             var element = "div#subTitle-"+$(this).attr("id").split("-")[1];
                             $(element).hide();
                         });
-                    });
+                    })
                 </script>
             </div>
             <div class="carouselBackgroundDiv">
@@ -145,7 +144,7 @@
                             <c:if test="${st.count<=5}">
                                 <div class="one-product" >
                                     <a href="product?pid=${p.id}"><img width="100px" src="img/productSingle_middle/${p.firstProductImage.id}.jpg"></a>
-                                    <a class="productItemDescLink" href="foreproduct?pid=${p.id}">
+                                    <a class="productItemDescLink" href="product?pid=${p.id}">
                                         <span class="productItemDesc">[热销]
                                             <!-- 截取name的前20个字符 -->
                                             ${fn:substring(p.name, 0, 20)}
