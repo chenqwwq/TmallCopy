@@ -17,7 +17,7 @@
                 <thead>
                     <tr>
                         <th class="selectAndImage">
-                            <img select="false" class="select-all" src="img/site/cartNotSelected.png">
+                            <img selectIt="false" class="select-all cart-select-img" src="img/site/cartNotSelected.png">
                             全选
                         </th>
                         <th>商品信息</th>
@@ -31,7 +31,7 @@
                     <c:forEach items="${orderItems}" var="orderItem">
                         <tr class="cart-product-tr">
                             <td>
-                                <img select="false" oiid="${oi.id}" class="cartProductItemIfSelected" src="img/site/cartNotSelected.png">
+                                <img selectIt="false" class="cart-select-img" src="img/site/cartNotSelected.png">
                                 <a style="display:none" href="#nowhere"><img src="img/site/cartSelected.png"></a>
                                 <img class="cart-product-img"  src="img/productSingle_middle/${orderItem.product.firstProductImage.id}.jpg">
                             </td>
@@ -58,11 +58,8 @@
                                     <a class="number-plus" href="#nowhere">+</a>
                                 </div>
                             </td>
-                            <td>
-                                <span class="cart-product-sumPrice">
-                                    ￥
-                                    <fmt:formatNumber type="number" value="${orderItem.product.promotePrice*orderItem.number}" minFractionDigits="2"/>
-                                </span>
+                            <td class="cart-sumPrice-td">
+                                <span class="cart-product-sumPrice">￥<fmt:formatNumber type="number" value="${orderItem.product.promotePrice*orderItem.number}" minFractionDigits="2"/></span>
                             </td>
                             <td>
                                 <a class="cart-delete-orderItem" href="#nowhere">删除</a>
@@ -82,4 +79,44 @@
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    $(function () {
+        //商品的选取动作
+       $("img.cart-select-img").click(function (){
+           var resu = $(this).parent().nextAll(".cart-sumPrice-td").children("span.cart-product-sumPrice").text()
+           var str = resu.substr(1);
+           alert(str)
+           alert("价格为："+Number(str));
+           //变量替换获取
+           var _this = $(this);
+           var _all = $("img.cart-select-img");
+           //1、判断selectIt的属性值
+           if(_this.attr("selectIt") === "false"){
+               //2、判断是否为全选
+               if(_this.hasClass("select-all")) {
+                   _all.attr("src", "img/site/cartSelected.png");
+                   _all.attr("selectIt","true");
+                   //全部价格累计
+                   var sum;
+                   _all.each(function () {
+                       var sum2 = $(this).parent().nextAll(".cart-sumPrice-td").children("span.cart-product-sumPrice");
+                   })
+               }else{
+                   _this.attr("src","img/site/cartSelected.png");
+                   _this.attr("selectIt","true");
+               }
+           }
+           else{
+               if(_this.hasClass("select-all")){
+                   _all.attr("src","img/site/cartNotSelected.png");
+                   _all.attr("selectIt","true");
+               }
+               else{
+                   _this.attr("src","img/site/cartNotSelected.png");
+                   _this.attr("selectIt","false");
+               }
+           }
+       });
+    })
+</script>
 </html>

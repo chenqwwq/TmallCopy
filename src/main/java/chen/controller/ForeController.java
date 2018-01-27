@@ -278,7 +278,6 @@ public class ForeController {
         User user = (User) httpSession.getAttribute("user");
         //获取用户对应的所有订单项信息
         List<OrderItem> orderItems = orderItemService.listByUser(user.getId());
-        System.out.println(orderItems.size());
         //初始化临时标志符
         boolean flag = false;   //默认初始化为false,如果不声明在编译前报错
         //遍历所有的订单并查找
