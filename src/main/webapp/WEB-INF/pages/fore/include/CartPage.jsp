@@ -17,7 +17,7 @@
                 <thead>
                     <tr>
                         <th class="selectAndImage">
-                            <img selectIt="false" class="select-all cart-select-img" src="img/site/cartNotSelected.png">
+                            <img selectIt="false" class="cart-select-all" src="img/site/cartNotSelected.png">
                             全选
                         </th>
                         <th>商品信息</th>
@@ -49,7 +49,7 @@
                                 <span class="cart-product-original-price">￥${orderItem.product.originalPrice}</span>
                                 <span  class="cart-product-promote-price">￥${orderItem.product.promotePrice}</span>
                             </td>
-                            <td>
+                            <td class="cart-product-number">
                                 <div class="cart-product-number-change-div">
                                     <%--<span class="hidden orderItemStock " pid="${orderItem.product.id}">${orderItem.product.stock}</span>--%>
                                     <%--<span class="hidden orderItemPromotePrice " pid="${orderItem.product.id}">${orderItem.product.promotePrice}</span>--%>
@@ -80,43 +80,114 @@
     </div>
 </body>
 <script type="text/javascript">
+
+    var _all = $("img.cart-select-img");
+    var _select_all = $("img.cart-select-all");
+
     $(function () {
-        //商品的选取动作
+        /**
+         * 在点击选择方面好像代码有点繁琐
+         */
+        /*
+            商品全选动作
+         */
+        _select_all.click(function () {
+            var _this = $(this);
+            if(_this.attr("selectIt") === "false") {
+               _all.attr("src", "img/site/cartSelected.png");
+               _all.attr("selectIt","true");
+               _this.attr("src","img/site/cartSelected.png");
+               _this.attr("selectIt","true");
+            }else{
+               _all.attr("src","img/site/cartNotSelected.png");
+               _all.attr("selectIt","false");
+               _this.attr("src","img/site/cartNotSelected.png");
+               _this.attr("selectIt","false");
+            }
+
+            syncSelect();
+            syncPrice()
+        });
+        /*
+          商品的选取动作
+         */
        $("img.cart-select-img").click(function (){
-           var resu = $(this).parent().nextAll(".cart-sumPrice-td").children("span.cart-product-sumPrice").text()
-           var str = resu.substr(1);
-           alert(str)
-           alert("价格为："+Number(str));
            //变量替换获取
-           var _this = $(this);
-           var _all = $("img.cart-select-img");
-           //1、判断selectIt的属性值
+           var _this = $(this)
            if(_this.attr("selectIt") === "false"){
-               //2、判断是否为全选
-               if(_this.hasClass("select-all")) {
-                   _all.attr("src", "img/site/cartSelected.png");
-                   _all.attr("selectIt","true");
-                   //全部价格累计
-                   var sum;
-                   _all.each(function () {
-                       var sum2 = $(this).parent().nextAll(".cart-sumPrice-td").children("span.cart-product-sumPrice");
-                   })
-               }else{
-                   _this.attr("src","img/site/cartSelected.png");
-                   _this.attr("selectIt","true");
-               }
+               _this.attr("src","img/site/cartSelected.png");
+               _this.attr("selectIt","true");
            }
            else{
-               if(_this.hasClass("select-all")){
-                   _all.attr("src","img/site/cartNotSelected.png");
-                   _all.attr("selectIt","true");
-               }
-               else{
-                   _this.attr("src","img/site/cartNotSelected.png");
-                   _this.attr("selectIt","false");
-               }
+               _this.attr("src","img/site/cartNotSelected.png");
+               _this.attr("selectIt","false");
            }
+           //调用同步函数
+           syncPrice();
+           syncSelect();
+           //同步全选
+           checkSelect();
        });
     })
+    /**
+     * 同步最后的结算价格
+     * 直接遍历所有的选择图标
+     */
+    function syncPrice() {
+        var sum = 0;
+        _all.each(function () {
+           if($(this).attr("selectIt") === "true"){
+               /*
+                * 此处使用个节点之间的关系来获取目标节点
+                * 和直接定义class或者id对比，优劣未知
+                */
+               //因为页面中显示的价格已经转化为字符串 所以此时需要转变回数值
+               var price = $(this).parent().nextAll(".cart-sumPrice-td").children("span.cart-product-sumPrice").text();
+               price = price.replace(/￥/g,"");
+               price = price.replace(/,/g,"");
+               sum += Number(price);
+           }
+       });
+       $("span.cartSumPrice").text("￥ "+sum);
+    }
+
+    /**
+     * 同步选择的商品件数
+     * 也是直接遍历所有选择图标
+     */
+    function syncSelect() {
+        var sum = 0;
+       _all.each(function () {
+           if($(this).attr("selectIt") === "true"){
+               var num = $(this).parent().nextAll(".cart-product-number").find("input.cart-orderItem-num").val();
+               sum += Number(num);
+           }
+       });
+       $("span.cartSumNumber").text(sum);
+    }
+
+    /**
+     * 如果单个商品的取消，在所有商品取消完之后，全选跟着变
+     * 反之也是
+     */
+    function checkSelect() {
+        //赋予第一个的属性的值
+        var flag = true;
+        var first = _all.eq(0).attr("selectIt");
+        _all.each(function () {
+            //逐个比较
+            if(first !== $(this).attr("selectIt")){
+                flag = false;
+                return false;
+            }
+        });
+        //如果没有返回,则说明全部一致
+        //全选选中
+        if(flag){
+            if(first  !== _select_all.attr("selectIt")){
+                _select_all.trigger("click");
+            }
+        }
+    }
 </script>
 </html>
