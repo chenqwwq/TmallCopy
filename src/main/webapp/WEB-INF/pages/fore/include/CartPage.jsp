@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>购物车界面</title>
+    <script src="/js/accounting.min.js"></script>
 </head>
 <body>
     <div class="cart-div">
@@ -51,15 +52,13 @@
                             </td>
                             <td class="cart-product-number">
                                 <div class="cart-product-number-change-div">
-                                    <%--<span class="hidden orderItemStock " pid="${orderItem.product.id}">${orderItem.product.stock}</span>--%>
-                                    <%--<span class="hidden orderItemPromotePrice " pid="${orderItem.product.id}">${orderItem.product.promotePrice}</span>--%>
                                     <a class="number-minus" href="#nowhere">-</a>
                                     <input class="cart-orderItem-num" autocomplete="off" value="${orderItem.number}">
                                     <a class="number-plus" href="#nowhere">+</a>
                                 </div>
-                            </td>
+                           </td>
                             <td class="cart-sumPrice-td">
-                                <span class="cart-product-sumPrice">￥<fmt:formatNumber type="number" value="${orderItem.product.promotePrice*orderItem.number}" minFractionDigits="2"/></span>
+                                <span class="cart-product-sumPrice" promotePrice="${orderItem.product.promotePrice}">￥<fmt:formatNumber type="number" value="${orderItem.product.promotePrice*orderItem.number}" minFractionDigits="2"/></span>
                             </td>
                             <td>
                                 <a class="cart-delete-orderItem" href="#nowhere">删除</a>
@@ -116,7 +115,7 @@
          */
        $("img.cart-select-img").click(function (){
            //变量替换获取
-           var _this = $(this)
+           var _this = $(this);
            if(_this.attr("selectIt") === "false"){
                _this.attr("src","img/site/cartSelected.png");
                _this.attr("selectIt","true");
@@ -141,28 +140,39 @@
         * 商品数目的点击事件
         * 边界判定和价格商品数目的同步留在input的点击事件
         */
-       /**
-        *  ...不知道为什么执行一次完整的响应过程会触发三次点击事件
-        *       因为被选中商品的数量同步放在点击事件
-        */
        _num_minus.click(function () {
            //确定需要改变的商品数目
            var num_ = $(this).siblings("input.cart-orderItem-num");
+           //改变页面显示的值
            num_.val(parseInt(num_.val()) - 1);
-           //通过代码手动触发propertychange事件
-           _product_number.trigger("change");
+           //通过代码手动触发change事件
+           num_.trigger("change");
        });
        _num_plus.click(function () {
            var num_ = $(this).siblings("input.cart-orderItem-num");
            num_.val(parseInt(num_.val()) + 1);
-           _product_number.trigger("change");
+           num_.trigger("change");
        });
        //input中的值的改变事件
         _product_number.on("change",function () {
+            //边界判定
             var value = $(this).val();
             if(value < 1 || isNaN(value)){
                $(this).val(1);
             }
+            //在商品数目改变后相应的总价的改变
+            //1.获取当前num
+            var num_ = parseInt($(this).val());
+            //2.获取对应的价格显示元素
+            var element_ = $(this).parent().parent().nextAll("td.cart-sumPrice-td").children();
+            //3.获取单价
+            var promotePrice_ = Number(element_.attr("promotePrice"));
+            //3.计算总价
+            var sumMoney_ = promotePrice_ * num_;
+            //5.修改页面
+            element_.text(defaultMoney(sumMoney_));
+//            var sumPrice_ = num_ * ;
+//            alert(sumPrice_)
         });
     });
     /**
@@ -179,14 +189,16 @@
                 */
                //因为页面中显示的价格已经转化为字符串 所以此时需要转变回数值
                var price = $(this).parent().nextAll(".cart-sumPrice-td").children("span.cart-product-sumPrice").text();
-               price = price.replace(/￥/g,"");
-               price = price.replace(/,/g,"");
+//               price = price.replace(/￥/g,"");
+//               price = price.replace(/,/g,"");
+               //直接调用accounting中的unformat方法去格式化
+               price = accounting.unformat(price);
                sum += Number(price);
            }
        });
-       $("span.cartSumPrice").text("￥ "+sum);
+        //调用accounting的方法格式化Money类数据
+       $("span.cartSumPrice").text(accounting.formatMoney(sum,"￥",2,",","."));
     }
-
     /**
      * 同步选择的商品件数
      * 也是直接遍历所有选择图标

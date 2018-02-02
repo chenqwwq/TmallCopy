@@ -18,3 +18,7 @@ function checkLogin() {
     });
     return tempResult;
 }
+
+function defaultMoney(money) {
+    return accounting.formatMoney(money,"￥",2,",",".");
+}
