@@ -307,8 +307,48 @@ public class ForeController {
         }
         return "success";
     }
-}
 
+    @RequestMapping("/changeNumber")
+    @ResponseBody
+    private String changeProductNumber(int num,int oiid){
+        //此处为第一次使用user获取所有的orderItem遍历的代码
+        //     //1、取出User对象
+        //        User user = (User)httpSession.getAttribute("user");
+        //        if(user == null){
+        //            return "fail";
+        //        }
+        //        //2、取出所有OrderItem
+        //        List<OrderItem> orderItems = orderItemService.listByUser(user.getId());
+        //        //3、遍历所有OrderItem
+        //        for (OrderItem orderItem
+        //                :orderItems) {
+        //            //4、找到Pid一致的OrderItem
+        //            if(orderItem.getPid() == pid){
+        //                //5、修改num
+        //                orderItem.setNumber(num);
+        //                //6、更新OrderItem
+        //                orderItemService.update(orderItem);
+        //                //7、直接退出
+        //                break;
+        //            }
+        //        }
+        //直接使用oiid修改OrderItem
+        //1.通过oiid取出OrderItem实例对象
+        OrderItem orderItem = orderItemService.get(oiid);
+        //2.修改OrderItem的Number属性
+        orderItem.setNumber(num);
+        //3.完成更新操作
+        orderItemService.update(orderItem);
+        return "success";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/deleteOrderItem")
+    private String deleteOrderItem(int pid,HttpSession httpSession){
+        return null;
+    }
+}
 
 
 

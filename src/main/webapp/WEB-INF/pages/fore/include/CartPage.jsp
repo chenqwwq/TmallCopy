@@ -83,6 +83,10 @@
 
     var _all = $("img.cart-select-img");
     var _select_all = $("img.cart-select-all");
+    var _delete = $("a.cart-delete-orderItem");
+    var _num_minus = $("a.number-minus");
+    var _num_plus = $("a.number-plus");
+    var _product_number = $("input.cart-orderItem-num");
 
     $(function () {
         /**
@@ -104,7 +108,6 @@
                _this.attr("src","img/site/cartNotSelected.png");
                _this.attr("selectIt","false");
             }
-
             syncSelect();
             syncPrice()
         });
@@ -128,7 +131,40 @@
            //同步全选
            checkSelect();
        });
-    })
+       /**
+        * 删除的点击事件
+        */
+       _delete.click(function () {
+
+       });
+       /**
+        * 商品数目的点击事件
+        * 边界判定和价格商品数目的同步留在input的点击事件
+        */
+       /**
+        *  ...不知道为什么执行一次完整的响应过程会触发三次点击事件
+        *       因为被选中商品的数量同步放在点击事件
+        */
+       _num_minus.click(function () {
+           //确定需要改变的商品数目
+           var num_ = $(this).siblings("input.cart-orderItem-num");
+           num_.val(parseInt(num_.val()) - 1);
+           //通过代码手动触发propertychange事件
+           _product_number.trigger("change");
+       });
+       _num_plus.click(function () {
+           var num_ = $(this).siblings("input.cart-orderItem-num");
+           num_.val(parseInt(num_.val()) + 1);
+           _product_number.trigger("change");
+       });
+       //input中的值的改变事件
+        _product_number.on("change",function () {
+            var value = $(this).val();
+            if(value < 1 || isNaN(value)){
+               $(this).val(1);
+            }
+        });
+    });
     /**
      * 同步最后的结算价格
      * 直接遍历所有的选择图标
@@ -185,6 +221,7 @@
         //全选选中
         if(flag){
             if(first  !== _select_all.attr("selectIt")){
+                //代码触发点击事件
                 _select_all.trigger("click");
             }
         }
