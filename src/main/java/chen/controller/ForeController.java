@@ -38,8 +38,8 @@ public class ForeController {
     private final OrderItemService orderItemService;
 
     @Autowired
-    public ForeController(UserService userService, CategoryService categoryService, ProductService productService, OrderService orderService, ProductImageService productImageService, PropertyValueService propertyValueService, ReviewService reviewService, OrderItemService orderItemService) {
-        this.userService = userService;
+    public ForeController(UserService userService, UserService userService1, CategoryService categoryService, ProductService productService, OrderService orderService, ProductImageService productImageService, PropertyValueService propertyValueService, ReviewService reviewService, OrderItemService orderItemService) {
+        this.userService = userService1;
         this.categoryService = categoryService;
         this.productService = productService;
         this.orderService = orderService;
@@ -308,7 +308,7 @@ public class ForeController {
         return "success";
     }
 
-    @RequestMapping("/changeNumber")
+    @PostMapping("/changeNumber")
     @ResponseBody
     private String changeProductNumber(int num,int oiid){
         //此处为第一次使用user获取所有的orderItem遍历的代码
@@ -333,6 +333,7 @@ public class ForeController {
         //            }
         //        }
         //直接使用oiid修改OrderItem
+
         //1.通过oiid取出OrderItem实例对象
         OrderItem orderItem = orderItemService.get(oiid);
         //2.修改OrderItem的Number属性
@@ -345,7 +346,7 @@ public class ForeController {
 
     @ResponseBody
     @RequestMapping("/deleteOrderItem")
-    private String deleteOrderItem(int pid,HttpSession httpSession){
+    private String deleteOrderItem(int oiid,HttpSession httpSession){
         return null;
     }
 }
