@@ -136,11 +136,27 @@
          * 删除的点击事件
          */
         _delete.click(function () {
-            //弹出警告框
-            //删除操作
-            //1.获取当前OrderItem的id
-            var orderItemId_ = $(this).attr("orderItemId");
-            alert("orderItemId:"+orderItemId_);
+            //弹出确认框图
+            if(window.confirm("确认删除该商品?")){
+                //1.获取当前OrderItemId
+                var oiid = $(this).attr("orderItemId");
+                //发送Ajax请求
+                $.ajax({
+                    url:"/deleteOrderItem",
+                    type:"post",
+                    dataType:"text",
+                    timeout:5000,
+                    data:{
+                        oiid:oiid
+                    },
+                    success:function (result) {
+                        location.reload();
+                    },
+                    error:function () {
+                        location.reload();
+                    }
+                });
+            }
         });
         /**
          * 商品数目的点击事件

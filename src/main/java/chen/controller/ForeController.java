@@ -79,7 +79,8 @@ public class ForeController {
         //从会话属性中删除user对象
         session.removeAttribute("user");
         //跳转回到登录界面
-        return "fore/Login";
+        return "redirect:/login";
+
     }
 
 
@@ -145,7 +146,7 @@ public class ForeController {
 
     @PostMapping("/register")
     @ResponseBody
-    private Result Register(User user,Model model){
+    private Result Register(User user){
         userService.add(user);
         return new Result();
     }
@@ -347,7 +348,9 @@ public class ForeController {
     @ResponseBody
     @RequestMapping("/deleteOrderItem")
     private String deleteOrderItem(int oiid,HttpSession httpSession){
-        return null;
+        //调用OrderItemService方法删除
+        orderItemService.delete(oiid);
+        return "success";
     }
 }
 
