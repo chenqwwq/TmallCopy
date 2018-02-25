@@ -11,12 +11,12 @@ import java.util.List;
 
 /**
  * 登录拦截器
- * 继承HandlerInterceptorAdapter实现其中preHandler方法,
+ * 继承HandlerInterceptorAdapter实现其中preHandler方法
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter{
     public LoginInterceptor() {
         super();
-        System.out.println("The LoginInterceptor is initializing");
+//        System.out.println("The LoginInterceptor is initializing");
     }
 
     /**
@@ -33,6 +33,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
      * @return
      * @throws Exception
      */
+    /**
+     * 在路径的筛选方面,也可以直接放在配置文件spring-web.xml中
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //1.Get the HttpSession object.
@@ -44,7 +47,17 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
         //4.Remove the redundant part.
         uri = StringUtils.remove(uri,contextPath);
         //5.This list is all of the path that does not need to login.
-        List<String> noLoginList = Arrays.asList("/login","/home");                  //singletonList : This method is used to generate a read-only list.
+        List<String> noLoginList = Arrays.asList(
+                //不全面..待补充
+                "/login",   //登录界面
+                "/home",    //首页
+                "/checkLogin",  //检查登录URL
+                "/register",    //注册界面
+                "/login_ajax",  //ajax的登录验证
+                "/product",     //商品页面
+                "/search",      //查找结果页面
+                "/category"     //分类显示页面
+        );                  //singletonList : This method is used to generate a read-only list.
         //Judgement step 1 : uri.
         if(!noLoginList.contains(uri)){
             //Judgement step 2 : Whether or not to login.

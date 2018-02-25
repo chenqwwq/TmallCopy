@@ -89,6 +89,20 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    public float add(Order order, List<OrderItem> orderItems) {
+        //add a variable named "total";
+        float total = 0;
+        //add this order to database;
+        add(order);
+        for (OrderItem orderItem: orderItems) {
+            orderItem.setOid(order.getId());
+            orderItemService.update(orderItem);
+            total += orderItem.getProduct().getPromotePrice() * orderItem.getNumber();
+        }
+        return total;
+    }
+
+    @Override
     public void update(Order order) {
         orderMapper.updateByPrimaryKey(order);
     }

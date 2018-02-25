@@ -86,6 +86,7 @@
     var _num_minus = $("a.number-minus");
     var _num_plus = $("a.number-plus");
     var _product_number = $("input.cart-orderItem-num");
+    var _createOrder_button = $("button.createOrderButton");
 
     $(function () {
         /**
@@ -222,6 +223,24 @@
                 syncSelect();
                 syncPrice();
             }
+        });
+
+        /**
+         *  结算按钮的点击事件
+         */
+        _createOrder_button.click(function () {
+            //URL后面跟的参数
+            var params = "";
+            //遍历所有选择项
+            $("img.cart-select-img").each(function () {
+                if($(this).attr("selectIt") === "true"){
+                    //如果被选中则获取该orderItemId
+                    var orderItemId = $(this).attr("id").substr(11);
+                    params += "&orderItemId="+orderItemId;
+                }
+            });
+            params = params.substr(1);
+            location.href = "settlement?"+params;
         });
     });
         /**

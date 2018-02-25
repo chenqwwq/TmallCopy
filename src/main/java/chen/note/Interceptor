@@ -1,0 +1,20 @@
+2018.2.14
+    About Interceptor(拦截器)
+        Interceptor类似于Servlet中的Filter(过滤器),用来做Controller(处理器)做预处理或者后处理.
+        Interceptor实际是AOP的一种实现策略.
+
+    所有的自定义Interceptor都必须间接/直接的实现org.springframework.web.servlet.HandlerInterceptor接口.
+    HandlerInterceptorAdapter是实现了HandlerInterceptor接口的抽象方法,extends HandlerInterceptorAdapter可以不需要实现所有的方法.
+
+    HandlerInterceptorAdapter的常用方法:
+        1.public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+                return true;
+            }
+        该方法在SpringMVC中,在HandlerAdapter(处理器适配器)执行之前执行,如果返回true则继续执行下一个Interceptor,如果返回false,则直接从最后一个Interceptor的afterCompletion()方法,
+        从后往前依次执行.
+        2.public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+            }
+        该方法在HandlerAdapter执行完毕之后执行,且为倒序执行.在该方法执行完毕之后开始View的渲染
+        3.public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)throws Exception {
+            }
+        该方法在View渲染之前(全部逻辑代码执行完毕,尚未进行view渲染之前)运行.为倒序运行

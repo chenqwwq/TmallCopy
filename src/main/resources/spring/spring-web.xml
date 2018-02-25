@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
     <!-- 扫描Controller层spring注解 -->
     <context:component-scan base-package="chen.controller"/>
-    <!-- 扫描spring mvc相关注解 -->
+    <!-- 声明mvc相关事务驱动 -->
     <mvc:annotation-driven/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver">
@@ -26,7 +26,21 @@
     <mvc:default-servlet-handler />
     
     <mvc:interceptors>
+        <!-- 全局拦截器 -->
         <bean class="chen.interceptor.LoginInterceptor"/>
+        <!-- 局部拦截器 -->
+        <mvc:interceptor>
+            <!-- 拦截的映射地址 -->
+            <mvc:mapping path="/**"/>
+            <!-- 排除不使用拦截的映射地址 -->
+            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/logout"/>
+            <mvc:exclude-mapping path="/register"/>
+            <mvc:exclude-mapping path="/login_ajax"/>
+            <mvc:exclude-mapping path="/verify_register"/>
+            <mvc:exclude-mapping path="/check_login"/>
+            <bean class="chen.interceptor.CategoryInfInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 
     <!--<mvc:resources mapping="/js/**" location="js"/>-->

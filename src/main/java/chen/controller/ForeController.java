@@ -12,13 +12,17 @@ import chen.dto.Result;
 import chen.entity.*;
 import chen.service.*;
 import com.github.pagehelper.PageHelper;
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,6 +55,7 @@ public class ForeController {
 
     //为需要类别数据的前端页面统一分配数据
     //此处使用该注解可能有些勉强 仅仅作为练习使用
+    //使用Interceptor代替
     /**
      * 在Fore的所有带有RequestMapping注解的方法执行前都会执行该方法
      * 为所有的Model添加key=categories的数据
@@ -59,12 +64,36 @@ public class ForeController {
 //    @ModelAttribute("categories")
 //    private List<Category> getCategories(){
 //        List<Category> categories = categoryService.list();
-//        //填充Product
+//        填充Product
 //        productService.fill(categories);
-//        //将Product分组
+//        将Product分组
 //        productService.fillByGroup(categories);
 //        return categories;
 //    }
+
+    //主页
+    @RequestMapping("/home")
+    private String home(){
+        return "fore/Home";
+    }
+
+    //注册页面
+    @RequestMapping("/register")
+    private String register(){
+        return "fore/Register";
+    }
+
+    //登录界面
+    @RequestMapping("/login")
+    private String login(){
+        return "fore/Login";
+    }
+
+    //支付页面
+    @RequestMapping("/alipay")
+    private String alipay(){
+        return "fore/Alipay";
+    }
 
     /**
      * 退出的业务逻辑
@@ -82,7 +111,6 @@ public class ForeController {
         return "redirect:/login";
 
     }
-
 
     /**
      * 登录的业务逻辑
@@ -351,6 +379,79 @@ public class ForeController {
         //调用OrderItemService方法删除
         orderItemService.delete(oiid);
         return "success";
+    }
+
+    @GetMapping("/category")
+    private String Category(int cid,String sort,Model model){
+        //Get the corresponding Category object
+        Category category = categoryService.get(cid);
+        //Loading the Product object
+        productService.fill(category);
+        //Loading the corresponding attributes
+        productService.setSaleAndReviewNumber(category.getProducts());
+
+        //The main local code of the sort
+        if(null != sort) {
+            switch (sort) {
+                case "all":
+                    category.getProducts().sort((p1, p2) -> p2.getReviewCount() * p2.getSaleCount() - p1.getReviewCount() * p1.getSaleCount());
+                    break;
+                case "review":
+                    category.getProducts().sort((o1, o2) -> o2.getReviewCount() - o1.getReviewCount());
+                    break;
+                case "date":
+                    category.getProducts().sort(Comparator.comparing(Product::getCreateDate));
+                    break;
+                case "saleCount":
+                    category.getProducts().sort((o1, o2) -> o2.getSaleCount() - o1.getSaleCount());
+                    break;
+                case "priceAsc":
+                    category.getProducts().sort((o1, o2) -> (int) (o1.getPromotePrice() - o2.getPromotePrice()));
+                    break;
+                case "priceDes":
+                    category.getProducts().sort((o1, o2) -> (int) (o2.getPromotePrice() - o1.getPromotePrice()));
+                    break;
+            }
+        }
+        //Set up the page attributes
+        model.addAttribute("category",category);
+        return "fore/ProductsByCategory";
+    }
+
+    @RequestMapping("/cart")
+    private String Cart(Model model, HttpSession httpSession){
+        //获取User
+        User user = (User)httpSession.getAttribute("user");
+        //是否登录检测
+        if(user != null) {
+            //获取需要的数据实例
+            List<OrderItem> orderItems = orderItemService.listByUser(((User) httpSession.getAttribute("user")).getId());
+            //设置页面属性
+            model.addAttribute("orderItems", orderItems);
+            //制定目标界面
+            return "fore/Cart";
+        }else
+            return "redirect:login";
+    }
+
+    @RequestMapping("/createOrder")
+    private String CreateOrder(Model model,Order order,HttpSession httpSession){
+        //Perfect the order parameter;
+        //Generate a random number as orderCode;
+        String orderCode = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + RandomUtils.nextInt(10000);
+        order.setOrderCode(orderCode);
+        //Fill createDate;
+        order.setCreateDate(new Date());
+        //Fill uid;
+        User user = (User)httpSession.getAttribute("user");
+        order.setUid(user.getId());
+        //Change status tp waitPay;
+        order.setStatus(OrderService.waitPay);
+        //Get all OrderItem information from session;
+        List<OrderItem> orderItems = (List<OrderItem>) httpSession.getAttribute("orderItems");
+        //Get the total price and redirect to the pay page;
+        float total = orderService.add(order,orderItems);
+        return "redirect:alipay?oid="+order.getId()+"&total="+total;
     }
 }
 

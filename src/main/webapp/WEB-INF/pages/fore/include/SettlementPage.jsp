@@ -73,6 +73,7 @@
                         </tr>
                     </thead>
                     <tbody class="product-table-tbody">
+                    <!-- 此处遍历订单项数据并显示 -->
                         <c:forEach items="${orderItems}" var="oi" varStatus="st" >
                             <tr class="orderItem-tr">
                                 <td class="orderItem-td">

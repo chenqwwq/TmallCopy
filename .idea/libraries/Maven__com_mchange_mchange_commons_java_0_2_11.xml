@@ -3,7 +3,9 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/mchange/mchange-commons-java/0.2.11/mchange-commons-java-0.2.11.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mchange/mchange-commons-java/0.2.11/mchange-commons-java-0.2.11-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/mchange/mchange-commons-java/0.2.11/mchange-commons-java-0.2.11-sources.jar!/" />
     </SOURCES>
