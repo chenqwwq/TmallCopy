@@ -12,6 +12,8 @@ import chen.service.OrderService;
 import chen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -89,6 +91,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    @Transactional(propagation= Propagation.REQUIRED,rollbackForClassName="Exception")
     public float add(Order order, List<OrderItem> orderItems) {
         //add a variable named "total";
         float total = 0;

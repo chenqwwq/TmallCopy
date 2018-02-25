@@ -11,7 +11,7 @@
         ssm的事务管理声明
         具体未知,暂时放service层
      -->
-    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="databaseSourceByC3P0"/>
         <property name="defaultTimeout" value="5000"/>
     </bean>

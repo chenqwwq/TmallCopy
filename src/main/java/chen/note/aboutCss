@@ -1,0 +1,7 @@
+    水平居中常用的几种方法:
+1.text-align:center 对行内元素生效(span等)
+2.margin:0 auto;    外边框自动
+3.父子元素采用相对定位 position:relative
+  父元素left:50% 子元素left:-50%
+4.转化为table,利用元素特性实现居中
+5.对于块级元素来说,可以转化为行内元素来实现水平居中

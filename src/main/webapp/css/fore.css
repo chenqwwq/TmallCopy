@@ -1098,4 +1098,33 @@ div.cart-foot button.createOrderButton{
     font-size: 17px;
 }
 
+/**
+    alipayPage
+ */
+div.alipay-div{
+    width: 100%;
+    text-align: center;
+}
+div.alipay-div div.alipay-Logo{
+    margin-bottom: 50px;
+}
+div.confirm-money-div span.confirm-money-num{
+    font-size: 18px;
+    color: #FF6600;
+    font-weight: bold;
+    margin: 20px;
+}
+
+div.alipay-div button.confirmPay{
+    background-color: #00AAEE;
+    border: #00AAEE;
+    text-align: center;
+    line-height: 31px;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    width: 107px;
+    margin-top: 20px;
+}
+
 

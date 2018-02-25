@@ -13,7 +13,7 @@
 <body>
     <div class="settlement-div">
         <!-- 此处用表单提交 -->
-        <form method="post">
+        <form method="post" action="/createOrder">
             <div class="buyFlow">
                 <img class="pull-left" src="img/site/simpleLogo.png">
                 <img class="pull-right" style="margin-right: 80px" src="img/site/buyflow.png">
@@ -150,6 +150,8 @@
             var textarea_span = $("span.leaveMessage-textarea-span");
             var orderItem_sum_div = $("div.orderItem-sum-div");
             var textarea = $("span.leaveMessage-textarea-span textarea");
+            $("button.submit-order-button").click(function () {
+            });
             /**
              *  切换img和textarea的函数
              */

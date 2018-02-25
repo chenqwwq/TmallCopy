@@ -264,7 +264,7 @@ public class ForeController {
         return "redirect:settlement?orderItemId="+orderItemId;
     }
 
-    @GetMapping("/settlement")
+    @RequestMapping("/settlement")
     /**
      * 此处之所以是要用int[] OrderItems是为了统一 直接购买 和 从购物车选定结算
      */
@@ -279,7 +279,7 @@ public class ForeController {
             /**
              * 测试输出
              */
-            System.out.println(orderItem);
+//            System.out.println(orderItem);
             //计算总额
             total += (orderItem.getProduct().getPromotePrice() * orderItem.getNumber()) ;
             //添加到OrderItem的列表
@@ -445,13 +445,28 @@ public class ForeController {
         //Fill uid;
         User user = (User)httpSession.getAttribute("user");
         order.setUid(user.getId());
-        //Change status tp waitPay;
+        //Change status to waitPay;
         order.setStatus(OrderService.waitPay);
         //Get all OrderItem information from session;
         List<OrderItem> orderItems = (List<OrderItem>) httpSession.getAttribute("orderItems");
         //Get the total price and redirect to the pay page;
         float total = orderService.add(order,orderItems);
         return "redirect:alipay?oid="+order.getId()+"&total="+total;
+    }
+
+    @RequestMapping("/payed")
+    private String Payed(int orderId,float total, Model model){
+        //Get the order information as a Object
+        Order order = orderService.get(orderId);
+        //Change payDate and status
+        order.setStatus(OrderService.waitDelivery);
+        order.setPayDate(new Date());
+        //Update database
+        orderService.update(order);
+        //Add the attribute
+        model.addAttribute("order",order);
+        //jump
+        return "fore/payed";
     }
 }
 
