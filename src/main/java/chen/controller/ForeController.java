@@ -466,7 +466,7 @@ public class ForeController {
         //Add the attribute
         model.addAttribute("order",order);
         //jump
-        return "fore/payed";
+        return "fore/Payed";
     }
 }
 

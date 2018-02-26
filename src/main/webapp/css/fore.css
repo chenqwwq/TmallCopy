@@ -1104,6 +1104,8 @@ div.cart-foot button.createOrderButton{
 div.alipay-div{
     width: 100%;
     text-align: center;
+    margin-bottom: 50px;
+    min-height: 500px;
 }
 div.alipay-div div.alipay-Logo{
     margin-bottom: 50px;
@@ -1126,5 +1128,9 @@ div.alipay-div button.confirmPay{
     width: 107px;
     margin-top: 20px;
 }
+
+/**
+    PayedPage.jsp
+ */
 
 
