@@ -24,7 +24,7 @@
        .pull-right  元素向右边飘移
     -->
     <span class="pull-right">
-            <a href="forebought">我的订单</a>
+            <a href="/bought">我的订单</a>
             <a href="cart">
             <span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-shopping-cart redColor"></span>
             购物车<strong>${user.waitPayOrderCount}</strong>件</a>

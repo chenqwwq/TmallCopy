@@ -74,6 +74,12 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    public void loadOrder(List<Order> orders) {
+        for (Order order : orders)
+            LoadOther(order);
+    }
+
+    @Override
     public Order get(int id) {
         Order order = orderMapper.selectByPrimaryKey(id);
         LoadOther(order);
@@ -121,5 +127,16 @@ public class OrderServiceImpl implements OrderService{
                 .andUidEqualTo(user.getId());
         //设置属性
         user.setWaitPayOrderCount(orderMapper.selectByExample(orderExample).size());
+    }
+
+    @Override
+    public List<Order> list(int uid, String excludedStatus) {
+        OrderExample orderExample = new OrderExample();
+        //Create a criteria for screening
+        orderExample.createCriteria().andUidEqualTo(uid).andStatusNotEqualTo(excludedStatus);
+        //Set sort order
+        orderExample.setOrderByClause("id desc");
+        //Return
+        return orderMapper.selectByExample(orderExample);
     }
 }

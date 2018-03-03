@@ -15,6 +15,7 @@ public interface OrderService {
     String delete = "delete";
 
     void loadOrder(Order order);
+    void loadOrder(List<Order> orders);
     List<Order> list();
     Order get(int id);
     void delete(int id);
@@ -22,4 +23,5 @@ public interface OrderService {
     float add(Order order,List<OrderItem> orderItems);
     void update(Order order);
     void loadWaitPayCount(User user);           //加载所有的等待付款的订单作为购物车项目
+    List<Order> list(int uid,String excludedStatus);
 }

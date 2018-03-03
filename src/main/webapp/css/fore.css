@@ -10,6 +10,7 @@ a{
 .color-white{
     color: white !important;
 }
+
 nav.top{
      background-color: #f2f2f2;
      padding-top: 5px;
@@ -93,7 +94,8 @@ div.footer_desc a{
     padding-top: 3px;
 }
 div.footer{
-    margin: 0px 0px;
+    margin: 0px 20px;
+    padding-top: 30px;
     border-top-style: solid;
     border-top-width: 1px;
     border-top-color: #e7e7e7;
@@ -1132,5 +1134,113 @@ div.alipay-div button.confirmPay{
 /**
     PayedPage.jsp
  */
+div.payed-div{
+    border: 1px solid #d4d4d4;
+    max-width: 1013px;
+    margin: 10px auto 20px auto;
+}
+
+div.payed-div div.payed-tip{
+    height: 60px;
+    background-color: #ECFFDC;
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+div.payed-div div.payed-addressInfo{
+    padding: 30px;
+}
+div.payed-addressInfo li{
+    padding-top: 15px;
+}
+div.payed-div div.check-link-div {
+    padding-top: 10px;
+    padding-left: 25px;
+}
+div.check-link-div a{
+    color: #2D8CBA;
+}
+div.payed-interval-line{
+    margin: 0 30px;
+    border-top: 1px dotted #d4d4d4;
+}
+div.payed-div div.payed-warning-div{
+    margin-top: 25px;
+    margin-bottom: 25px ;
+    padding-left: 40px;
+}
+/**
+    BoughtPage.jsp
+ */
+div.bought-div{
+    width: 1024px;
+    margin: 50px auto;
+}
+div.bought-div div.bought-orderType{
+    width: 100%;
+    margin: 0 auto;
+}
+div.bought-orderType div{
+    float: left;
+    border-bottom: 2px solid #E8E8E8;
+    margin-bottom: 10px;
+}
+div.bought-orderType a{
+    height: 25px;
+    border-right: 1px solid #E8E8E8;
+    float: left;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+}
+div.orderTypeLastOne{
+    overflow: hidden;
+    float: none !important;
+}
+div.bought-orderType div.select-orderType{
+    border-bottom:2px solid #c40000;
+}
+div.bought-orderType div.select-orderType a{
+    color: #C40000;
+}
+div.bought-orderType a.select-orderType:hover{
+    text-decoration: none;
+}
+div.bought-orderType a.noRight-a{
+    border-right-width: 0 !important;
+}
+div.orderList-title{
+    /*border: 1px solid black;*/
+    margin-top: 20px;
+    /*padding: 10px;*/
+    height: 60px;
+    text-align: center;
+}
+div.orderList-title table.orderList-title-table{
+    border: 1px solid #E8E8E8;
+    width: 100%;
+    background-color: #F5F5F5;
+    text-align: center;
+}
+div.orderList-title td{
+    padding: 15px 0;
+}
+div.orderItemWangWangGif {
+    display: inline-block;
+    width: 67px;
+    height: 22px;
+    background-image: url(http://how2j.cn/tmall/img/site/wangwang.gif);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-attachment: scroll;
+    background-position: -0px -0px;
+    position: relative;
+    top: 0px;
+    left: 2px;
+}
 
 

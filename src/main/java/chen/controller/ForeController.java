@@ -468,6 +468,20 @@ public class ForeController {
         //jump
         return "fore/Payed";
     }
+
+
+    @RequestMapping("/bought")
+    private String Bought(Model model,HttpSession session){
+        //Get the id of the login user
+        User user =  (User)session.getAttribute("user");
+        int id = user.getId();
+        //Get all order information of this use and exclude the Status is Delete
+        List<Order> orders = orderService.list(id,OrderService.delete);
+        //Fill
+        orderService.loadOrder(orders);
+        model.addAttribute("orders",orders);
+        return "fore/Bought";
+    }
 }
 
 
