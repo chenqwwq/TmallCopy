@@ -479,8 +479,39 @@ public class ForeController {
         List<Order> orders = orderService.list(id,OrderService.delete);
         //Fill
         orderService.loadOrder(orders);
+//        System.out.println(orders.get(1).getOrderItems().size());
         model.addAttribute("orders",orders);
         return "fore/Bought";
+    }
+
+    /**
+     * 获取相应order并跳转到确认收货页面
+     * @param oid
+     * @return
+     */
+    @RequestMapping("/confirmPay")
+    @ResponseBody
+    private String confirmPay(int oid,Model model){
+        //获取Order
+        Order order = orderService.get(oid);
+        //选择性属性填充
+        orderService.loadOrder(order);
+        //设置页面属性
+        model.addAttribute("order",order);
+        return "fore/confirmPay";
+    }
+
+    @PostMapping("/deleteOrder")
+    @ResponseBody
+    private String DeleteOrder(int oid){
+        //Get the order object.
+        Order order = orderService.get(oid);
+        //Modify  the status attribute.
+        order.setStatus(OrderService.delete);
+        //Update
+        orderService.update(order);
+
+        return "success";
     }
 }
 

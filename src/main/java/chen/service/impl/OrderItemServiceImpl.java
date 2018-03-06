@@ -33,6 +33,15 @@ public class OrderItemServiceImpl implements OrderItemService{
     }
 
     @Override
+    public List<OrderItem> list(int oid) {
+        OrderItemExample orderItemExample = new OrderItemExample();
+        orderItemExample.createCriteria().andOidEqualTo(oid);
+        List<OrderItem> orderItems = orderItemMapper.selectByExample(orderItemExample);
+        LoadOther(orderItems);
+        return orderItems;
+    }
+
+    @Override
     public List<OrderItem> list() {
         //创建筛选条件
         OrderItemExample orderItemExample = new OrderItemExample();

@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService{
     }
     private void LoadOther(Order order){
         order.setUser(userService.get(order.getUid()));
-        order.setOrderItems(orderItemService.list());
+        order.setOrderItems(orderItemService.list(order.getId()));
     }
 
     /**
@@ -76,7 +76,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void loadOrder(List<Order> orders) {
         for (Order order : orders)
-            LoadOther(order);
+            loadOrder(order);
     }
 
     @Override
@@ -136,7 +136,11 @@ public class OrderServiceImpl implements OrderService{
         orderExample.createCriteria().andUidEqualTo(uid).andStatusNotEqualTo(excludedStatus);
         //Set sort order
         orderExample.setOrderByClause("id desc");
+        //Get all the data
+        List<Order> orders = orderMapper.selectByExample(orderExample);
+        //loadOther
+       LoadOther(orders);
         //Return
-        return orderMapper.selectByExample(orderExample);
+        return orders;
     }
 }

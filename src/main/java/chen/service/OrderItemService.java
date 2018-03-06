@@ -5,6 +5,7 @@ import chen.entity.OrderItem;
 import java.util.List;
 
 public interface OrderItemService {
+    List<OrderItem> list(int oid);
     List<OrderItem> list();
     OrderItem get(int id);
     void delete(int id);
