@@ -13,11 +13,11 @@
 <body>
     <div class="bought-div">
         <div class="bought-orderType">
-            <div class="select-orderType"><a >所有订单</a></div>
-            <div><a>待付款</a></div>
-            <div><a>待发货</a></div>
-            <div><a>待收货</a></div>
-            <div><a class="noRight-a">待评价</a></div>
+            <div class="select-orderType"><a status="all" href="#newhere">所有订单</a></div>
+            <div><a status="waitPay" href="#newhere">待付款</a></div>
+            <div><a status="waitDelivery" href="#newhere">待发货</a></div>
+            <div><a status="waitConfirm" href="#newhere">待收货</a></div>
+            <div><a class="noRight-a" status="waitReview" href="#newhere">待评价</a></div>
             <div class="orderTypeLastOne">
                 <a class="noRight-a"></a>
             </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="orderList-item">
             <c:forEach items="${orders}" var="o">
-                <table class="orderList-item-table">
+                <table class="orderList-item-table" status="${o.status}">
                     <tr class="orderList-item-tr">
                         <!-- 此处显示订单号码 以及一些功能图标 -->
                         <td colspan="2">
@@ -87,7 +87,7 @@
                                 <td valign="top" rowspan="${fn:length(o.orderItems)}"
                                     class="orderListItemButton-td orderItemOrderInfo-td" width="100px">
                                     <c:if test="${o.status=='waitConfirm' }">
-                                        <a href="foreconfirmPay?oid=${o.id}">
+                                        <a href="confirmReceiveGoods?oid=${o.id}">
                                             <button class="orderListItemConfirm">确认收货</button>
                                         </a>
                                     </c:if>
@@ -115,7 +115,12 @@
     </div>
 <script>
     $(function () {
-        $("a.deleteOrderLink").click(function () {
+        var _deleteOrderLink = $("a.deleteOrderLink");
+        var _all_orderType_a = $("div.bought-div div.bought-orderType a");
+        /**
+         * 删除的点击事件
+         */
+        _deleteOrderLink.click(function () {
             //Get oid
             var oid = $(this).attr("oid");
             if(confirm("确认删除订单?")){
@@ -129,10 +134,63 @@
                         if(result === "success")
                             location.reload();
                     }
-            });
+                });
             }
         });
+        /**
+         * 选择不同的OrderType的动态效果
+         */
+        _all_orderType_a.click(function () {
+            //Remove the quondam orderType
+            removeOrderTypeClass();
+            //Add orderType class for the current element
+            $(this).parent().addClass("select-orderType");
+            //Get the corresponding status
+            var status_ = $(this).attr("status");
+            //Call toggleList
+            toggleList(status_);
+        });
     });
+    function toggleList(status) {
+        var table_  = $("div.orderList-item table.orderList-item-table");
+        if(status === 'all'){
+            table_.each(function () {
+                $(this).show();
+            });
+        }else {
+            $("table.orderList-item-table").each(function () {
+                //Get the status
+                var status_  = $(this).attr("status");
+                // alert("status_ :"+status_);
+                // alert("status :"+status);
+                // alert("boolean :"+(status_ === status))
+                //Contrast two parameters
+                if(status_ !== status){
+                    $(this).hide();
+                }else {
+                    $(this).show();
+                }
+            });
+        }
+    }
+
+    function removeOrderTypeClass() {
+        var div_ = $("div.bought-div div.bought-orderType");
+        //RemoveClass
+        div_.find(".select-orderType").removeClass("select-orderType");
+    }
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

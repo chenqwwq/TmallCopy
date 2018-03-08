@@ -35,6 +35,9 @@ public class OrderServiceImpl implements OrderService{
         OrderExample orderExample = new OrderExample();
         orderExample.setOrderByClause("id desc");
         List<Order> orders =  orderMapper.selectByExample(orderExample);
+//        for (Order order : orders){
+//            System.out.println(order);
+//        }
         LoadOther(orders);  //加载非数据库属性
         return orders;
     }

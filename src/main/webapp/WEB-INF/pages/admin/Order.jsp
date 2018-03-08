@@ -50,7 +50,7 @@
                             <td>
                                 <button class="orderPageCheckOrderItems btn btn-primary btn-xs">查看详情</button>
                                 <c:if test="${order.status=='waitDelivery'}">
-                                    <a href="orderDelivery?id=${order.id}">
+                                    <a href="orderDelivery?oid=${order.id}">
                                         <button class="btn btn-primary btn-xs">发货</button>
                                     </a>
                                 </c:if>

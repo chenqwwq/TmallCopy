@@ -52,10 +52,14 @@ public class OrderController {
     }
 
     @RequestMapping("orderDelivery")
-    public String delivery(Order o) throws IOException {
-        o.setDeliveryDate(new Date());
-        o.setStatus(OrderService.waitConfirm);
-        orderService.update(o);
-        return "redirect:admin/Order";
+    public String delivery(int oid){
+        //Get the corresponding order object.
+        Order order = orderService.get(oid);
+        //Modify attributes
+        order.setDeliveryDate(new Date());
+        order.setStatus(OrderService.waitConfirm);
+        //Update
+        orderService.update(order);
+        return "redirect:order";
     }
 }

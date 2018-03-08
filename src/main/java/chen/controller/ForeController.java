@@ -501,6 +501,11 @@ public class ForeController {
         return "fore/confirmPay";
     }
 
+    /**
+     * 订单页面的的删除订单操作
+     * @param oid
+     * @return
+     */
     @PostMapping("/deleteOrder")
     @ResponseBody
     private String DeleteOrder(int oid){
@@ -510,8 +515,43 @@ public class ForeController {
         order.setStatus(OrderService.delete);
         //Update
         orderService.update(order);
-
         return "success";
+    }
+
+    /**
+     * 订单页面点击确认收货 接受并跳转
+     * @param oid
+     * @param model
+     * @return
+     */
+    @GetMapping("/confirmReceiveGoods")
+    private String confirmReceiveGoods(int oid,Model model){
+        //Get the corresponding Order object.
+        Order order = orderService.get(oid);
+        //fill
+        orderService.loadOrder(order);
+        //Add Attribute
+        model.addAttribute("order",order);
+        return "fore/ConfirmReceiveGoods";
+    }
+
+    /**
+     * 确认收货
+     * @param oid
+     * @return
+     */
+    @GetMapping("/confirmReceipt")
+    private String confirmReceipt(int oid){
+       //Get the corresponding Order Object
+       Order order = orderService.get(oid);
+       //Modify the status property
+       order.setStatus(OrderService.waitReview);
+       //Fill the confirmDate property
+       order.setConfirmDate(new Date());
+       //Update
+       orderService.update(order);
+       //Jump to confirm page
+       return "fore/ReceiveSuccess";
     }
 }
 
