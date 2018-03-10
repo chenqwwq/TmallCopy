@@ -1,7 +1,9 @@
 # TmallCopy
 
-1.在web.xml增加MultipartFilters之后会报
-    java.lang.IllegalStateException:
-     Unable to process parts as no multi-part configuration has been provided错误
+开发环境 : Ubuntu16.04.
+基础框架 : Spring MVC + myBaits.
+运用工具 : Maven Jsp Servlet等.
 
-2.将spring-web.xml的multipartResolver改名之后,会报空指针异常.文件无法正常上传
+个人练习项目,资源在How2j.cn.
+数据库文件有空再上传.
+
