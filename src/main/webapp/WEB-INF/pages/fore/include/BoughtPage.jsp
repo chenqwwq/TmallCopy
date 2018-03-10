@@ -101,7 +101,7 @@
                                         <button class="btn btn-info">催卖家发货</button>
                                     </c:if>
                                     <c:if test="${o.status=='waitReview' }">
-                                        <a href="forereview?oid=${o.id}">
+                                        <a href="review?oid=${o.id}">
                                             <button  class="orderListItemReview">评价</button>
                                         </a>
                                     </c:if>

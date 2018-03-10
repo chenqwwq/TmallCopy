@@ -1419,4 +1419,130 @@ div.orderFinish-div{
     margin: 0 auto;
 }
 
+/*
+    ReviewPage.jsp
+ */
+div.Review-div{
+    padding: 10px;
+    width: 1024px;
+    margin: 35px auto;
+}
+
+div.Review-div div.productInfo-div{
+    border: 1px solid #e7e7e7;
+}
+div.productInfo-div div.productInfoImg-div{
+    float: left;
+    width: 460px;
+    padding-left: 30px;
+}
+div.Review-div div.productInfoText-div{
+    padding: 30px 20px;
+    overflow: hidden;
+}
+div.productInfoText-div div.productInfoText-name{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+div.productInfoText-div table.productInfoText-table {
+    margin: 30px 20px;
+}
+table.productInfoText-table td{
+    padding-top: 20px;
+    color: #999999;
+}
+table.productInfoText-table span.productInfoText-price{
+    color: #c40000;
+    font-size: 20px;
+    font-weight: bold;
+}
+table.productInfoText-table span.productInfoText-saleCount{
+    font-size: 14px;
+    color: #c40000;
+    font-weight: bold;
+}
+div.Review-div div.review-div{
+    width: 100%;
+    margin-top: 60px;
+}
+div.review-div div.reviewTitle{
+    border-left: 1px solid #D5D4D4;
+    border-right: #D5D4D4;
+    line-height: 35px;
+    color: #363535;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 4px solid #F6F5F1;
+}
+div.reviewTitle div.reviewTitle-text{
+    border-top: 3px solid #c40000;
+    width: 200px;
+    text-align: center;
+    background-color: #F6F5F1;
+}
+div.review-div div.addReview-div{
+    background-color: #F6F5F1;
+    margin-top: 50px;
+    width: 100%;
+    padding: 30px;
+    border: 1px solid #D1CCC8;
+}
+div.addReview-div div.addReview-Text{
+    font-weight: bold;
+    font-size: 16px;
+    color: #333333;
+}
+div.addReview-div table.addReview-table{
+    margin: 20px 40px;
+    background-color: white;
+    border: 1px solid #D1CCC8;
+}
+table.addReview-table td.addReview-td{
+    border-right: 2px solid #e7e7e7;
+    padding: 15px;
+}
+table.addReview-table textarea{
+    border-width: 0px;
+    resize: none;
+    width: 420px;
+    height: 120px;
+}
+div.addReview-div div.addReviewButton-div{
+    width: 100%;
+    text-align: center;
+}
+div.addReviewButton-div button{
+    width: 72px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 2px;
+    background-color: #C40000;
+    color: white;
+    font-size: 14px !important;
+    border-width: 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.review-div div.reviewList-div{
+    margin-top: 50px;
+    border: 1px solid #D1CCC8;
+}
+div.review-div div.reviewList-foreach{
+    background-color: #e7e7e7;
+    padding: 15px;
+}
+div.reviewList-div div.reviewContent{
+    margin-top: 20px;
+    border: 1px solid #D1CCC8;
+    margin-left: 30px;
+    width: 900px;
+    background-color: white;
+    height: 50px;
+}
+div.reviewList-div div.reviewDate{
+    margin-top: 20px;
+}
+
 

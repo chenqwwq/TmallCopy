@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
@@ -552,6 +553,54 @@ public class ForeController {
        orderService.update(order);
        //Jump to confirm page
        return "fore/ReceiveSuccess";
+    }
+
+
+    /**
+     * 评价跳转
+     */
+    @GetMapping("/review")
+    private String Review(int oid,Model model){
+        //Get the corresponding Order object.
+        Order order = orderService.get(oid);           //Has been filled
+        //Get the first Product object.
+        Product product = order.getOrderItems().get(0).getProduct();
+        //Get all of reviews and set SaleCount and ReviewCount.
+        List<Review> reviews = reviewService.listByPid(product.getId());
+        productService.setSaleAndReviewNumber(product);
+        //Add attributes.
+        model.addAttribute("product",product);
+        model.addAttribute("order",order);
+        model.addAttribute("reviews",reviews);
+        //Return.
+        return "fore/Review";
+    }
+
+    /**
+     * 添加评论
+     */
+    @PostMapping("doReview")
+    private String doReview(int oid,int pid,String content,HttpSession httpSession){
+        //Get the corresponding order object.
+        Order order = orderService.get(oid);
+        //Finish the attribute named "status".
+        order.setStatus(OrderService.finish);
+        //Update to the database.
+        orderService.update(order);
+        //Get the corresponding product object.
+        Product product = productService.get(pid);
+        //content
+        content = HtmlUtils.htmlEscape(content);
+        //Create a new review object and fill it.
+        Review review = new Review();
+        review.setContent(content);
+        User user = (User)httpSession.getAttribute("user");
+        review.setUid(user.getId());
+        review.setCreateDate(new Date());
+        review.setPid(pid);
+        //Update to the database.
+        reviewService.add(review);
+        return "redirect:review?oid="+oid+"&showOnly=true";
     }
 }
 
