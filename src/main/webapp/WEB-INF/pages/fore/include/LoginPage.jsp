@@ -70,7 +70,7 @@
                 <div class="login-link">
                     <a>忘记密码</a>
                     <a>忘记用户名</a>
-                    <a href="/register">免费注册</a>
+                    <a href="register">免费注册</a>
                 </div>
             </div>
         </form>
