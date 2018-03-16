@@ -1,6 +1,6 @@
-﻿DROP DATABASE IF EXISTS tmall_ssm_dbCopy;
-CREATE DATABASE tmall_ssm_dbCopy DEFAULT CHARACTER SET utf8;
-USE tmall_ssm_dbCopy;
+﻿DROP DATABASE IF EXISTS tmall_ssm;
+CREATE DATABASE tmall_ssm DEFAULT CHARACTER SET utf8;
+USE tmall_ssm;
 CREATE TABLE category (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(255) DEFAULT NULL,
