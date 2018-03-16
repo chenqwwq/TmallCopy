@@ -13,7 +13,7 @@
 <body>
     <div class="settlement-div">
         <!-- 此处用表单提交 -->
-        <form method="post" action="/createOrder">
+        <form method="post" action="createOrder">
             <div class="buyFlow">
                 <img class="pull-left" src="img/site/simpleLogo.png">
                 <img class="pull-right" style="margin-right: 80px" src="img/site/buyflow.png">

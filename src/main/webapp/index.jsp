@@ -3,5 +3,5 @@
     //Server jump
 //    request.getRequestDispatcher("/home").forward(request,response);
     //Client jump
-    response.sendRedirect("/home");
+    response.sendRedirect("home");
 %>

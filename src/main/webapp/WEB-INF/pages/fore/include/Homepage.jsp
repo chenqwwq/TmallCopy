@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <script src="/js/fore/Home.js"></script>
+        <script src="js/fore/Home.js"></script>
     </head>
     <img src="img/site/catear.png" id="catHead" class="catHead"/>
     <body>
@@ -20,12 +20,12 @@
                     <span style="margin-left:10px" >商品分类</span>
                 </div>
                 <div class="rightMenu">
-                    <span><a href=""><img src="/img/site/chaoshi.png"/></a></span>
-                    <span><a href=""><img src="/img/site/guoji.png"/></a></span>
+                    <span><a href=""><img src="img/site/chaoshi.png"/></a></span>
+                    <span><a href=""><img src="img/site/guoji.png"/></a></span>
                     <c:forEach items="${categories}" var="category" varStatus="st">
                         <c:if test="${st.count <= 4}">
                             <span >
-                                <a href="/category?cid=${category.id}" class="color-white">${category.name}</a>
+                                <a href="category?cid=${category.id}" class="color-white">${category.name}</a>
                             </span>
                         </c:if>
 
@@ -37,7 +37,7 @@
                     <c:forEach items="${categories}" var="c">
                         <div class="one-category" id="categoury-${c.id}">
                             <span class="glyphicon glyphicon-link"></span>
-                            <a href="/category?cid=${c.id}">
+                            <a href="category?cid=${c.id}">
                                  ${c.name}
                             </a>
                         </div>

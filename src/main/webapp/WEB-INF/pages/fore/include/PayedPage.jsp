@@ -27,8 +27,8 @@
 
 			<div class="check-link-div">
 				您可以
-				<a class="payed-check-link" href="forebought">查看已买到的宝贝</a>
-				<a class="payed-check-link" href="forebought">查看交易详情 </a>
+				<a class="payed-check-link" href="bought">查看已买到的宝贝</a>
+				<a class="payed-check-link" href="bought">查看交易详情 </a>
 			</div>
         </div>
 		<div class="payed-interval-line"></div>

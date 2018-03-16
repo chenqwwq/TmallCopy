@@ -28,7 +28,7 @@
     </div>
 
     <div>
-        <a href="/payed?orderId=${param.oid}&total=${param.total}"><button class="confirmPay">确认支付</button></a>
+        <a href="payed?orderId=${param.oid}&total=${param.total}"><button class="confirmPay">确认支付</button></a>
     </div>
 
 </div>

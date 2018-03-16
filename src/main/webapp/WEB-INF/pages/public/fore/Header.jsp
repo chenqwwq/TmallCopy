@@ -13,10 +13,10 @@
 
 <html>
     <head>
-	<script src="/js/jquery/jquery.min.js"></script>
-	<link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-	<script src="/js/bootstrap/bootstrap.min.js"></script>
-	<link href="/css/fore.css" rel="stylesheet">
-	<script src="/js/fore.js"></script>
+	<script src="js/jquery/jquery.min.js"></script>
+	<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<link href="css/fore.css" rel="stylesheet">
+	<script src="js/fore.js"></script>
     </head>
 </html>

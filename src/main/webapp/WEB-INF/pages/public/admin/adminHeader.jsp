@@ -4,11 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %> 
 <html>
 <head>
-	<script src="/js/jquery/jquery.min.js"></script>
-	<link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-	<script src="/js/bootstrap/bootstrap.min.js"></script>
-	<link href="/css/admin.css" rel="stylesheet">
-	<script src="/js/admin.js"></script>
+	<script src="js/jquery/jquery.min.js"></script>
+	<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<link href="css/admin.css" rel="stylesheet">
+	<script src="js/admin.js"></script>
 </head>
 <body>
 

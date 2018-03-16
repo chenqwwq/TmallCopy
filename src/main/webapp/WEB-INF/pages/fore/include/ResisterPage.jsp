@@ -59,7 +59,7 @@
                 <div class="register-step-2 alert alert-success" style="display: none">
                     恭喜，注册成功!!!
                     <br>
-                    <a href="Home.jsp  ">跳转到首页</a>
+                    <a href="home">跳转到首页</a>
                 </div>
             </div>
             <script>

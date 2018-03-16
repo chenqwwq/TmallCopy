@@ -74,10 +74,10 @@
                 <div class="product-template-div">
                     <img src="img/productSingle_middle/${product.firstProductImage.id}.jpg">
                     <span class="product-price">¥<fmt:formatNumber type="number" value="${product.promotePrice}" minFractionDigits="2"/></span>
-                    <a class="product-link productItemDescLink" href="/product?pid=${product.id}">
+                    <a class="product-link productItemDescLink" href="product?pid=${product.id}">
                         <span>${fn:substring(product.name, 0, 50)}</span>
                     </a>
-                    <a  class="tmall-link " href="/product?pid=${product.id}">
+                    <a  class="tmall-link " href="product?pid=${product.id}">
                         天猫专卖
                     </a>
                     <div class="show1 product-info">

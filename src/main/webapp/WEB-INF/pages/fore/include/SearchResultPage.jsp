@@ -31,7 +31,7 @@
                             <a class="product-link" href="/product?pid=${product.id}">
                                     ${fn:substring(product.name, 0, 50)}
                             </a>
-                            <a  class="tmall-link" href="/product?pid=${product.id}">
+                            <a  class="tmall-link" href="product?pid=${product.id}">
                                 天猫专卖
                             </a>
                             <div class="show1 product-info">
