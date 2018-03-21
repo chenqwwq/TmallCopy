@@ -13,7 +13,7 @@
 <body>
     <div class="payed-div">
         <div class="payed-tip">
-            <img src="img/site/paySuccess.png">
+            <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/paySuccess.png">
             <span>您已成功付款</span>
         </div>
         <div class="payed-addressInfo">
@@ -33,7 +33,7 @@
         </div>
 		<div class="payed-interval-line"></div>
 		<div class="payed-warning-div">
-			<img src="img/site/warning.png">
+			<img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/warning.png">
 			<b>安全提醒：</b>下单后，<span class="redColor boldWord">用QQ给您发送链接办理退款的都是骗子！</span>天猫不存在系统升级，订单异常等问题，谨防假冒客服电话诈骗！
 		</div>
     </div>

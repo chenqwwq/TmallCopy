@@ -43,7 +43,7 @@
                             <b><fmt:formatDate value="${o.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></b>
                             <span>订单号: ${o.orderCode}</span>
                         </td>
-                        <td  colspan="2"><img width="13px" src="img/site/orderItemTmall.png">天猫商场</td>
+                        <td  colspan="2"><img width="13px" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/orderItemTmall.png">天猫商场</td>
                         <td colspan="1">
                             <a class="wangwanglink" href="#nowhere">
                                 <div class="orderItemWangWangGif"></div>
@@ -60,15 +60,15 @@
                         <!-- 遍历Order中的OrderItems属性, 显示图片,名称,价格等-->
                         <tr class="orderItemProductInfo-tr">
                             <td class="orderItemProductInfo-td">
-                                <img width="80" height="80" src="img/productSingle_middle/${oi.product.firstProductImage.id}.jpg">
+                                <img width="80" height="80" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle_middle/${oi.product.firstProductImage.id}.jpg">
                             </td>
                             <td class="orderItemProductInfo-td">
                                 <div class="orderListItemProductLinkOutDiv">
-                                    <a href="foreproduct?pid=${oi.product.id}">${oi.product.name}</a>
+                                    <a href="product?pid=${oi.product.id}">${oi.product.name}</a>
                                     <div class="orderListItemProductLinkInnerDiv">
-                                        <img src="img/site/creditcard.png" title="支持信用卡支付">
-                                        <img src="img/site/7day.png" title="消费者保障服务,承诺7天退货">
-                                        <img src="img/site/promise.png" title="消费者保障服务,承诺如实描述">
+                                        <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/creditcard.png" title="支持信用卡支付">
+                                        <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/7day.png" title="消费者保障服务,承诺7天退货">
+                                        <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/promise.png" title="消费者保障服务,承诺如实描述">
                                     </div>
                                 </div>
                             </td>

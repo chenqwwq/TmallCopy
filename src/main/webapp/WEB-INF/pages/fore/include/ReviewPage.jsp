@@ -14,7 +14,7 @@
     <div class="Review-div">
         <div class="productInfo-div">
             <div class="productInfoImg-div">
-                <img width="400px" height="400px" src="img/productSingle/${product.firstProductImage.id}.jpg" >
+                <img width="400px" height="400px" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle/${product.firstProductImage.id}.jpg" >
             </div>
             <div class="productInfoText-div">
                 <div class="productInfoText-name">

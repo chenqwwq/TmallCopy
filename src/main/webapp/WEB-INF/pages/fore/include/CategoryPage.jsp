@@ -13,7 +13,7 @@
 <body>
     <div class="category-page-div">
         <div class="category-picture-div">
-            <img src="img/category/${category.id}.jpg">
+            <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/category/${category.id}.jpg">
         </div>
         <div class="category-sort-div">
             <table class="category-sort-table">
@@ -72,7 +72,7 @@
         <div class="category-products-div">
             <c:forEach items="${category.products}" var="product">
                 <div class="product-template-div">
-                    <img src="img/productSingle_middle/${product.firstProductImage.id}.jpg">
+                    <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle_middle/${product.firstProductImage.id}.jpg">
                     <span class="product-price">¥<fmt:formatNumber type="number" value="${product.promotePrice}" minFractionDigits="2"/></span>
                     <a class="product-link productItemDescLink" href="product?pid=${product.id}">
                         <span>${fn:substring(product.name, 0, 50)}</span>
@@ -85,7 +85,7 @@
                         <span class="product-review">评价<span class="productReviewNumber"> ${product.reviewCount}</span></span>
                         <span class="wangwang">
                             <a class="wangwanglink" href="#nowhere">
-                                <img src="img/site/wangwang.png">
+                                <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/wangwang.png">
                             </a>
                         </span>
                     </div>

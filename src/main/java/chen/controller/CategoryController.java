@@ -91,7 +91,7 @@ public class CategoryController {
         image.transferTo(file);
         BufferedImage img = ImageUtil.change2jpg(file);
         ImageIO.write(img, "jpg", file);
-        return "redirect:/admin"+URL;
+        return "redirect:admin"+URL;
     }
 
 

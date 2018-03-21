@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="simpleSearchOutDiv">
     <a href="${contextPath}">
-        <img id="simpleLogo" class="simpleLogo" src="img/site/simpleLogo.png">
+        <img id="simpleLogo" class="simpleLogo" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/simpleLogo.png">
     </a>
 
     <form action="search">

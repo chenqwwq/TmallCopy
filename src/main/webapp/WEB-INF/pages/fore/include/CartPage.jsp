@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>购物车界面</title>
-    <script src="/js/accounting.min.js"></script>
+    <script src="js/accounting.min.js"></script>
 </head>
 <body>
     <div class="cart-div">
@@ -18,7 +18,7 @@
                 <thead>
                     <tr>
                         <th class="selectAndImage">
-                            <img selectIt="false" class="cart-select-all" src="img/site/cartNotSelected.png">
+                            <img selectIt="false" class="cart-select-all" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/cartNotSelected.png">
                             全选
                         </th>
                         <th>商品信息</th>
@@ -32,17 +32,17 @@
                     <c:forEach items="${orderItems}" var="orderItem">
                         <tr class="cart-product-tr">
                             <td>
-                                <img selectIt="false" id="select-img-${orderItem.id}" class="cart-select-img" src="img/site/cartNotSelected.png">
+                                <img selectIt="false" id="select-img-${orderItem.id}" class="cart-select-img" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/cartNotSelected.png">
                                 <%--<a style="display:none" href="#nowhere"><img src="img/site/cartSelected.png"></a>--%>
-                                <img class="cart-product-img"  src="img/productSingle_middle/${orderItem.product.firstProductImage.id}.jpg">
+                                <img class="cart-product-img"  src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle_middle/${orderItem.product.firstProductImage.id}.jpg">
                             </td>
                             <td style="width: 500px">
                                 <div class="cart-product-link-div">
                                     <a href="product?pid=${orderItem.product.id}" class="cart-product-link">${orderItem.product.name}</a>
                                     <div class="cartProductLinkInnerDiv">
-                                        <img src="img/site/creditcard.png" title="支持信用卡支付">
-                                        <img src="img/site/7day.png" title="消费者保障服务,承诺7天退货">
-                                        <img src="img/site/promise.png" title="消费者保障服务,承诺如实描述">
+                                        <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/creditcard.png" title="支持信用卡支付">
+                                        <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/7day.png" title="消费者保障服务,承诺7天退货">
+                                        <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/promise.png" title="消费者保障服务,承诺如实描述">
                                     </div>
                                 </div>
                             </td>
@@ -119,11 +119,11 @@
             //变量替换获取
             var _this = $(this);
             if (_this.attr("selectIt") === "false") {
-                _this.attr("src", "img/site/cartSelected.png");
+                _this.attr("src", "https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/cartSelected.png");
                 _this.attr("selectIt", "true");
             }
             else {
-                _this.attr("src", "img/site/cartNotSelected.png");
+                _this.attr("src", "https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/cartNotSelected.png");
                 _this.attr("selectIt", "false");
             }
             //调用同步函数,同步数目和价格

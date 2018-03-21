@@ -13,7 +13,7 @@
 <body>
     <div class="orderFinish-div">
         <div class="orderFinish-text-div">
-            <img src="img/site/orderFinish.png">
+            <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/orderFinish.png">
             <span>交易已经成功，卖家将收到您的货款。</span>
         </div>
     </div>

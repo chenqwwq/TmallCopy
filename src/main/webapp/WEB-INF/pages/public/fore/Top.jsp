@@ -13,7 +13,7 @@
     </a>
     <span>喵，欢迎来天猫</span>
     <c:if test="${!empty user}">
-        <a href="login.jsp">${user.name}</a>
+        <a href="login">${user.name}</a>
         <a href="logout">退出</a>
     </c:if>
     <c:if test="${empty user}">

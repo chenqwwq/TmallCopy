@@ -12,7 +12,7 @@
 
     <div id="footer_ensure" class="footer_ensure">
         <a href="#nowhere">
-            <img src="img/site/ensure.png">
+            <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/ensure.png">
         </a>
     </div>
 
@@ -51,13 +51,13 @@
         </div>
         <div class="descColumn">
             <span class="descColumnTitle">手机天猫</span>
-            <a href="#nowhere" ><img src="img/site/ma.png"></a>
+            <a href="#nowhere" ><img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/ma.png"></a>
         </div>
 
     </div>
     <div style="clear:both">
     </div>
-    <img id="cateye" class="cateye" src="img/site/cateye.png">
+    <img id="cateye" class="cateye" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/cateye.png">
     <div id="copyright" class="copyright">
         <div class="coptyrightMiddle">
             <div class="white_link" >
@@ -103,8 +103,8 @@
                 <span>互联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span>
                 <div class="copyRightYear">© 2003-2016 TMALL.COM 版权所有</div>
                 <div>
-                    <img src="img/site/copyRight1.jpg">
-                    <img src="img/site/copyRight2.jpg">
+                    <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/copyRight1.jpg">
+                    <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/copyRight2.jpg">
                 </div>
             </div>
         </div>

@@ -63,7 +63,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
             //Judgement step 2 : Whether or not to login.
             if(null == session.getAttribute("user")){
                 //Redirecting to login page.
-                response.sendRedirect("/login");
+                response.sendRedirect("login");
                 return false;
             }
         }

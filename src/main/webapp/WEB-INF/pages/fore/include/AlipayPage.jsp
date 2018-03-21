@@ -13,7 +13,7 @@
 <body>
 <div class="alipay-div">
     <div class="alipay-Logo">
-        <img class="pull-left" src="img/site/simpleLogo.png">
+        <img class="pull-left" src="https://c:henbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/simpleLogo.png">
         <div style="clear:both"></div>
     </div>
 
@@ -24,7 +24,7 @@
         ￥<fmt:formatNumber type="number" value="${param.total}" minFractionDigits="2"/></span>
     </div>
     <div>
-        <img class="alipay-img" src="img/site/alipay2wei.png">
+        <img class="alipay-img" src=https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/alipay2wei.png">
     </div>
 
     <div>

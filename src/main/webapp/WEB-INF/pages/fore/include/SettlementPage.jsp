@@ -15,8 +15,8 @@
         <!-- 此处用表单提交 -->
         <form method="post" action="createOrder">
             <div class="buyFlow">
-                <img class="pull-left" src="img/site/simpleLogo.png">
-                <img class="pull-right" style="margin-right: 80px" src="img/site/buyflow.png">
+                <img class="pull-left" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/simpleLogo.png">
+                <img class="pull-right" style="margin-right: 80px" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/buyflow.png">
                 <div style="clear:both"></div>
             </div>
             <div class="address">
@@ -62,7 +62,7 @@
                     <thead>
                         <tr>
                             <th colspan="2" style="width: 50%">
-                                <img class="tmall-buy" src="img/site/tmallbuy.png">
+                                <img class="tmall-buy" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/tmallbuy.png">
                                 <a class="market-link" href="#nowhere">店铺：天猫店铺</a>
                                 <a class="wangwanglink" href="#nowhere"> <span class="wangwangGif"></span> </a>
                             </th>
@@ -77,16 +77,16 @@
                         <c:forEach items="${orderItems}" var="oi" varStatus="st" >
                             <tr class="orderItem-tr">
                                 <td class="orderItem-td">
-                                    <img class="orderItem-img" src="img/productSingle_middle/${oi.product.firstProductImage.id}.jpg">
+                                    <img class="orderItem-img" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle_middle/${oi.product.firstProductImage.id}.jpg">
                                 </td>
                                 <td class="orderItem-product-name">
                                     <a  href="product?pid=${oi.product.id}">
                                             ${oi.product.name}
                                     </a>
                                     <br/>
-                                    <img src="img/site/creditcard.png" title="支持信用卡支付">
-                                    <img src="img/site/7day.png" title="消费者保障服务,承诺7天退货">
-                                    <img src="img/site/promise.png" title="消费者保障服务,承诺如实描述">
+                                    <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/creditcard.png" title="支持信用卡支付">
+                                    <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/7day.png" title="消费者保障服务,承诺7天退货">
+                                    <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/promise.png" title="消费者保障服务,承诺如实描述">
                                 </td>
                                 <td>
                                     <span class="orderItem-product-price">￥<fmt:formatNumber type="number" value="${oi.product.promotePrice}" minFractionDigits="2"/></span>
@@ -120,7 +120,7 @@
                             给卖家留言：
                         </span>
                         <span>
-                            <img class="leaveMessageImg" src="img/site/leaveMessage.png">
+                            <img class="leaveMessageImg" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/leaveMessage.png">
                         </span>
                         <span class="leaveMessage-textarea-span" style="display: none">
                             <textarea></textarea>
@@ -146,7 +146,7 @@
          * 1、图片和输入框的切换
          */
         $(function () {
-            var leaveMessageImg = $("img.leaveMessageImg");
+            var leaveMessageImg = $("https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images.leaveMessageImg");
             var textarea_span = $("span.leaveMessage-textarea-span");
             var orderItem_sum_div = $("div.orderItem-sum-div");
             var textarea = $("span.leaveMessage-textarea-span textarea");

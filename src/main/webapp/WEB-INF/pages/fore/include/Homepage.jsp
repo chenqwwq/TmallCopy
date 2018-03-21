@@ -20,8 +20,8 @@
                     <span style="margin-left:10px" >商品分类</span>
                 </div>
                 <div class="rightMenu">
-                    <span><a href=""><img src="img/site/chaoshi.png"/></a></span>
-                    <span><a href=""><img src="img/site/guoji.png"/></a></span>
+                    <span><a href=""><img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/chaoshi.png"/></a></span>
+                    <span><a href=""><img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/guoji.png"/></a></span>
                     <c:forEach items="${categories}" var="category" varStatus="st">
                         <c:if test="${st.count <= 4}">
                             <span >
@@ -109,16 +109,16 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img class="carousel carouselImage" src="img/lunbo/1.jpg" >
+                        <img class="carousel carouselImage" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/lunbo/1.jpg" >
                     </div>
                     <div class="item">
-                        <img  class="carouselImage" src="img/lunbo/2.jpg" >
+                        <img  class="carouselImage" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/lunbo/2.jpg" >
                     </div>
                     <div class="item">
-                        <img  class="carouselImage" src="img/lunbo/3.jpg" >
+                        <img  class="carouselImage" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/lunbo/3.jpg" >
                     </div>
                     <div class="item">
-                        <img  class="carouselImage" src="img/lunbo/4.jpg" >
+                        <img  class="carouselImage" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/lunbo/4.jpg" >
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                         <c:forEach items="${c.products}" var="p" varStatus="st">
                             <c:if test="${st.count<=5}">
                                 <div class="one-product" >
-                                    <a href="product?pid=${p.id}"><img width="100px" src="img/productSingle_middle/${p.firstProductImage.id}.jpg"></a>
+                                    <a href="product?pid=${p.id}"><img width="100px" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle_middle/${p.firstProductImage.id}.jpg"></a>
                                     <a class="productItemDescLink" href="product?pid=${p.id}">
                                         <span class="productItemDesc">[热销]
                                             <!-- 截取name的前20个字符 -->
@@ -160,7 +160,7 @@
                     </div>
                 </c:if>
             </c:forEach>
-            <img id="end-png" class="end-png" src="img/site/end.png">
+            <img id="end-png" class="end-png" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/end.png">
         </div>
     </body>
 </html>

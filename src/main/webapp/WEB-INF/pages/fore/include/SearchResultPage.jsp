@@ -26,7 +26,7 @@
                 <div class="show-result-div">
                     <c:forEach items="${products}" var="product">
                         <div class="product-template-div">
-                            <img src="img/productSingle_middle/${product.firstProductImage.id}.jpg">
+                            <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle_middle/${product.firstProductImage.id}.jpg">
                             <span class="product-price">¥<fmt:formatNumber type="number" value="${product.promotePrice}" minFractionDigits="2"/></span>
                             <a class="product-link" href="/product?pid=${product.id}">
                                     ${fn:substring(product.name, 0, 50)}
@@ -39,7 +39,7 @@
                                 <span class="product-review">评价<span class="productReviewNumber"> ${product.reviewCount}</span></span>
                                 <span class="wangwang">
                             <a class="wangwanglink" href="#nowhere">
-                                <img src="img/site/wangwang.png">
+                                <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/wangwang.png">
                             </a>
                         </span>
                             </div>

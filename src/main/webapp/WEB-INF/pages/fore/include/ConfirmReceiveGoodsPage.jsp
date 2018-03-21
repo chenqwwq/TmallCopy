@@ -13,7 +13,7 @@
 <body>
     <div class="ConfirmReceiveGoodsPage">
         <div class="confirmReceiveImageDiv">
-            <img src="img/site/comformPayFlow.png">
+            <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/comformPayFlow.png">
             <div  class="confirmPayTime1">
                 <fmt:formatDate value="${order.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
             </div>
@@ -41,7 +41,7 @@
                 <tbody>
                     <c:forEach items="${order.orderItems}" var="oi">
                         <tr>
-                            <td><img width="50px" src="img/productSingle_middle/${oi.product.firstProductImage.id}.jpg"></td>
+                            <td><img width="50px" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle_middle/${oi.product.firstProductImage.id}.jpg"></td>
                             <td class="orderItem-link">
                                 <a href="product?pid=${oi.product.id}">${oi.product.name}</a>
                             </td>
@@ -61,7 +61,7 @@
                 <table class="orderOtherInfo-table">
                     <tr>
                         <td>订单编号：</td>
-                        <td>${order.orderCode} <img width="23px" src="img/site/confirmOrderTmall.png"></td>
+                        <td>${order.orderCode} <img width="23px" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/confirmOrderTmall.png"></td>
                     </tr>
                     <tr>
                         <td>卖家昵称：</td>

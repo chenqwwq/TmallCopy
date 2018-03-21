@@ -12,16 +12,16 @@
 </head>
 <body>
     <div class="category-picture-div">
-        <img class="category-picture" src="img/category/${product.category.id}.jpg">
+        <img class="category-picture" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/category/${product.category.id}.jpg">
     </div>
     <div class="product-main-div">
         <div class="imgAndInfo">
             <!-- 左边大图以及缩略图 -->
             <div class="Img">
-                <img class="product-big-img" src="img/productSingle/${product.firstProductImage.id}.jpg">
+                <img class="product-big-img" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle/${product.firstProductImage.id}.jpg">
                 <div class="product-small-img">
                     <c:forEach items="${product.singleImage}" var="sImg">
-                        <img src="img/productSingle_small/${sImg.id}.jpg">
+                        <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productSingle_small/${sImg.id}.jpg">
                     </c:forEach>
                 </div>
             </div>
@@ -41,7 +41,7 @@
 
                     <div class="product-price">
                         <div class="gouwujuan-div">
-                            <img height="16px" src="img/site/gouwujuan.png">
+                            <img height="16px" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/gouwujuan.png">
                             <span> 全天猫实物商品通用</span>
                         </div>
                         <div class="origin-price-div">
@@ -76,7 +76,7 @@
                         <span class="arrow">
                             <a href="#nowhere" class="increase-number">
                                 <span class="updown">
-                                    <img src="img/site/increase.png">
+                                    <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/increase.png">
                                 </span>
                             </a>
 
@@ -85,7 +85,7 @@
 
                             <a href="#nowhere"  class="decrease-number">
                                 <span class="updown">
-                                    <img src="img/site/decrease.png">
+                                    <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/decrease.png">
                                 </span>
                             </a>
                         </span>
@@ -131,7 +131,7 @@
                 </div>
                 <div class="product-detailImg-list">
                     <c:forEach items="${product.detailImage}" var="pi">
-                        <img src="img/productDetail/${pi.id}.jpg">
+                        <img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/productDetail/${pi.id}.jpg">
                     </c:forEach>
                 </div>
             </div>

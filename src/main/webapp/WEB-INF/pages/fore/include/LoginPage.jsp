@@ -36,12 +36,12 @@
 <body>
     <div id="login-div">
         <div class="simpleLogo">
-            <a href="${contextPath}"><img src="img/site/simpleLogo.png"></a>
+            <a href="${contextPath}"><img src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/simpleLogo.png"></a>
         </div>
 
-        <img id="loginBackgroundImg" class="loginBackgroundImg" src="img/site/loginBackground.png">
+        <img id="loginBackgroundImg" class="loginBackgroundImg" src="https://chenbxxx.oss-cn-beijing.aliyuncs.com/tmallCopy_images/site/loginBackground.png">
 
-        <form class="login-form" action="/login" method="post">
+        <form class="login-form" action="login" method="post">
             <div id="login-div-inside">
                 <div id="login-error-div" class="alert alert-danger" style="display: none" role="alert">
                     <span id="login-error-span">
